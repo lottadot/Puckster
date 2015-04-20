@@ -1,0 +1,156 @@
+# #################
+# This is Shane's ".gitignore" file. shane@lottadot.com 
+# It should always be available at the following URL:
+# http://lottadot.com/files/gitignore.txt
+#
+# Please do not remove the comments from this file.
+# Just because *you* think they should be removed and can 
+# remember everything noted in it, there are those of us 
+# that cannot. Besides, I've put a lot of work into this 
+# file. Don't redistribute it without credit.
+# 
+# If you can recommend any changes, please email them.
+#
+# Installation: 
+# You want to copy it to the root of your user directory. ie
+# ~/.gitignore
+#
+# When you create a new git repo, it's also advisable to do it 
+# and then include this git ignore information in the repo's 
+# exclusion file. ie
+#
+# cd ~/projects
+# mkdir mygreatnewproject
+# cd mygreatnewproject
+# git init
+# cat ~/.gitignore >> .git/info/exclude
+# git config branch.autosetupmerge true --global
+# git add . 
+# git commit -m 'initial version'
+# 
+
+#git
+.gitattributes
+.gitignore
+
+#OSX
+.DS_Store
+profile
+Legacy
+
+#Xcode
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!default.pbxuser
+!default.perspectivev3
+!default.mode1v3
+!default.mode2v3
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.mode1v3
+*.mode2v3
+build/
+build/revision
+Build/
+/build/
+Logging/build
+Logging/Build
+Logging/TemporaryItems
+Logging/*.xcodeproj/*.mode2v3
+Logging/*.xcodeproj/*.pbxuser
+Local.xcconfig
+Xcode
+*.tmproj
+test-reports/*
+xcuserdata/
+*.o
+*.py
+*~.nib
+UserInterface.xcuserstate
+*.xcuserstate
+project.xcworkspace/
+
+# Textmate
+*.tm_build_errors
+*~.nib
+*~.xib
+*.pyc
+pkg
+github-test.rb
+Rakefile.private
+
+#backup files
+*~
+*~.nib
+ 
+#if you use vi/Vim
+*.swp
+.swp
+*.old
+ 
+#subversion/cvs/mercurial
+.svn
+CVS
+.hg
+
+#autosaved
+*(Autosaved).rtfd/
+Backup[ ]of[ ]*.pages/
+Backup[ ]of[ ]*.key/
+Backup[ ]of[ ]*.numbers/
+
+#VisualStudio
+*.vcproj.*.user
+*.user
+*.aps
+*.suo
+_ReSharper.*
+*.sln.cache
+*.scc
+*.licx
+*.ncb
+*.vspcc
+*.vscc
+*.vssscc
+\bin
+\obj
+#dll exclusion is debatable
+#*.dll
+
+#android
+#built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated GUI files
+*R.java
+bin
+gen
+
+#RubyRails
+coverage
+rdoc
+pkg
+test/tmp
+test/version_tmp
+tmp
+pkg
+*.gem
+*.rbc
+lib/bundler/man
+spec/reports
+.config
+InstalledFiles
+.bundle
+
+# YARD artifacts
+.yardoc
+_yardoc
+doc/
