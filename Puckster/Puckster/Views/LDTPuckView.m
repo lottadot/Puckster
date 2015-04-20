@@ -9,7 +9,21 @@
 #import "LDTPuckView.h"
 #import "LDTPuckViewDelegate.h"
 
+#define LDTPuckViewDefaultWidth  50.0f
+#define LDTPuckViewDefaultHeight 50.0f
+
 @implementation LDTPuckView
+
+- (instancetype)initWithFrame:(CGRect)frame withDelegate:(id<LDTPuckViewDelegate>)delegate
+{
+    NSParameterAssert(delegate);
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setBackgroundColor:[UIColor redColor]];
+        _delegate = delegate;
+    }
+    return self;
+}
 
 - (instancetype)initWithDelegate:(id<LDTPuckViewDelegate>)delegate
 {
@@ -24,7 +38,7 @@
 
 - (CGSize)intrinsicContentSize
 {
-    return CGSizeMake(50.0f, 50.0f);
+    return CGSizeMake(LDTPuckViewDefaultWidth, LDTPuckViewDefaultHeight);
 }
 
 @end

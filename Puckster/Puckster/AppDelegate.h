@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class LDTPuckControl;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

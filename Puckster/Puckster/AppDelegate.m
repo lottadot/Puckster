@@ -7,16 +7,17 @@
 //
 
 #import "AppDelegate.h"
+#import "LDTPuckControl.h"
 
 @interface AppDelegate ()
-
+@property (nonatomic, strong) LDTPuckControl *puckControl;
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [self performSelector:@selector(addPuck) withObject:application afterDelay:.05f];
     return YES;
 }
 
@@ -40,6 +41,13 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)addPuck
+{
+    UIWindow *window = self.window;
+    _puckControl = [[LDTPuckControl alloc] initInWindow:window
+                                           withLocation:LDTPuckViewLocationBottomRight];
 }
 
 @end

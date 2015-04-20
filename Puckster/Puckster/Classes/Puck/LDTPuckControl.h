@@ -7,9 +7,20 @@
 //
 
 @import Foundation;
+@import UIKit;
 
 @class LDTPuckView;
 
+typedef enum : NSUInteger {
+    LDTPuckViewLocationTopLeft,
+    LDTPuckViewLocationTopRight,
+    LDTPuckViewLocationBottomLeft,
+    LDTPuckViewLocationBottomRight
+} LDTPuckViewLocation;
+
+
 @interface LDTPuckControl : NSObject
+
+- (instancetype)initInWindow:(UIWindow *)window withLocation:(LDTPuckViewLocation)location;
 
 @end
