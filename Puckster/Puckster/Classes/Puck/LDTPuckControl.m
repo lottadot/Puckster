@@ -75,6 +75,7 @@
                                  initWithTarget:self
                                  action:@selector(puckSingleTapped:)];
         [_singleTapGestureRecognizer setNumberOfTapsRequired:1];
+        [_singleTapGestureRecognizer requireGestureRecognizerToFail:[self doubleTapGestureRecognizer]];
     }
     return _singleTapGestureRecognizer;
 }
