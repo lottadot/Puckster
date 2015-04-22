@@ -43,7 +43,7 @@
         
         [window addSubview:[self puckView]];
         [_puckView setAutoresizingMask:UIViewAutoresizingNone];
-        [_puckView setBackgroundColor:[UIColor blueColor]];
+        //[_puckView setBackgroundColor:[UIColor blueColor]];
         [_puckView setCenter:[self puckCenterForLocation:_puckLocation]];
         [self.puckView addGestureRecognizer:[self upVerticalSwipeGestureRecognizer]];
         [self.puckView addGestureRecognizer:[self downVerticalSwipeGestureRecognizer]];
