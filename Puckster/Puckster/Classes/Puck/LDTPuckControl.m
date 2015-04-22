@@ -36,15 +36,15 @@
     if (self) {
         
         _puckLocation = location;
+        CGPoint center = CGPointMake(CGRectGetMaxY(window.frame),CGRectGetMaxY(window.frame));
         
-        CGRect frame = CGRectMake(0.0f, 0.0f, 50.0f, 50.0f);
-        _puckView = [[LDTPuckView alloc] initWithFrame:frame withDelegate:self];
-
+        _puckView = [[LDTPuckView alloc] initWithPoint:center withDelegate:self];
+        NSAssert(nil != _puckView, nil);
+        
         [window addSubview:[self puckView]];
         [_puckView setAutoresizingMask:UIViewAutoresizingNone];
-        [_puckView setCenter:[self puckCenterForLocation:_puckLocation]];
         [_puckView setBackgroundColor:[UIColor blueColor]];
-        
+        [_puckView setCenter:[self puckCenterForLocation:_puckLocation]];
         [self.puckView addGestureRecognizer:[self upVerticalSwipeGestureRecognizer]];
         [self.puckView addGestureRecognizer:[self downVerticalSwipeGestureRecognizer]];
         [self.puckView addGestureRecognizer:[self leftHorizontalSwipeGestureRecognizer]];

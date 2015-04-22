@@ -16,7 +16,6 @@
 
 @property (nonatomic, readonly) id<LDTPuckViewDelegate> delegate;
 
-- (instancetype)initWithFrame:(CGRect)frame withDelegate:(id<LDTPuckViewDelegate>)delegate;
-- (instancetype)initWithDelegate:(id<LDTPuckViewDelegate>)delegate;
+- (instancetype)initWithPoint:(CGPoint)point withDelegate:(id<LDTPuckViewDelegate>)delegate;
 
 @end

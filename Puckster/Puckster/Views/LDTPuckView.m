@@ -14,6 +14,15 @@
 
 @implementation LDTPuckView
 
+- (instancetype)initWithPoint:(CGPoint)point withDelegate:(id<LDTPuckViewDelegate>)delegate
+{
+    CGRect frame = CGRectMake(point.x - LDTPuckViewDefaultWidth,
+                              point.y - LDTPuckViewDefaultHeight,
+                              LDTPuckViewDefaultWidth,
+                              LDTPuckViewDefaultHeight);
+    return [self initWithFrame:frame withDelegate:delegate];
+}
+
 - (instancetype)initWithFrame:(CGRect)frame withDelegate:(id<LDTPuckViewDelegate>)delegate
 {
     NSParameterAssert(delegate);
