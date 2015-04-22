@@ -16,7 +16,8 @@
 @interface LDTPuckControl () <LDTPuckViewDelegate>
 
 @property (nonatomic, strong) LDTPuckView *puckView;
-@property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
+@property (nonatomic, strong) UITapGestureRecognizer *singleTapGestureRecognizer;
+@property (nonatomic, strong) UITapGestureRecognizer *doubleTapGestureRecognizer;
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *rightHorizontalSwipeGestureRecognizer;
 @property (nonatomic, strong) UISwipeGestureRecognizer *leftHorizontalSwipeGestureRecognizer;
@@ -49,6 +50,8 @@
         [self.puckView addGestureRecognizer:[self leftHorizontalSwipeGestureRecognizer]];
         [self.puckView addGestureRecognizer:[self rightHorizontalSwipeGestureRecognizer]];
 
+        [self.puckView addGestureRecognizer:[self singleTapGestureRecognizer]];
+        [self.puckView addGestureRecognizer:[self doubleTapGestureRecognizer]];
         //[[self puckView] setNeedsLayout];
         
         [window bringSubviewToFront:_puckView];
@@ -65,14 +68,26 @@
     return _puckView;
 }
 
-- (UITapGestureRecognizer *)tapGestureRecognizer
+- (UITapGestureRecognizer *)singleTapGestureRecognizer
 {
-    if (nil == _tapGestureRecognizer) {
-        _tapGestureRecognizer = [[UITapGestureRecognizer alloc]
+    if (nil == _singleTapGestureRecognizer) {
+        _singleTapGestureRecognizer = [[UITapGestureRecognizer alloc]
                                  initWithTarget:self
-                                 action:@selector(puckTapped:)];
+                                 action:@selector(puckSingleTapped:)];
+        [_singleTapGestureRecognizer setNumberOfTapsRequired:1];
     }
-    return _tapGestureRecognizer;
+    return _singleTapGestureRecognizer;
+}
+
+- (UITapGestureRecognizer *)doubleTapGestureRecognizer
+{
+    if (nil == _doubleTapGestureRecognizer) {
+        _doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc]
+                                 initWithTarget:self
+                                 action:@selector(puckDoubleTapped:)];
+        [_doubleTapGestureRecognizer setNumberOfTapsRequired:2];
+    }
+    return _doubleTapGestureRecognizer;
 }
 
 - (UISwipeGestureRecognizer *)leftHorizontalSwipeGestureRecognizer
@@ -177,10 +192,14 @@
 
 #pragma mark - UIGestureRecognizer Events
 
-- (IBAction)puckTapped:(id)sender
+- (IBAction)puckSingleTapped:(id)sender
 {
-    UITapGestureRecognizer *recognizer = (UITapGestureRecognizer *)sender;
-    // TODO
+    [self expandAnimated:YES];
+}
+
+- (IBAction)puckDoubleTapped:(id)sender
+{
+    [self dismissAnimated:YES];
 }
 
 - (IBAction)puckSwipedHorizontallyLeft:(id)sender
@@ -259,6 +278,141 @@
             break;
         }
     }
+}
+
+#pragma mark - Expansion
+
+- (void)expandAnimated:(BOOL)animated
+{
+    // What window will we show?
+    // Where does it get it's content from?
+}
+
+#pragma mark - Dismissal
+
+- (void)dismissAnimated:(BOOL)animated
+{
+    NSTimeInterval duration = 1.0f;
+    
+    /*
+     Shift the puck in while enlarging, then flex it, then shrink it the corner
+     */
+    CGFloat movementFactor = 100.0f;
+
+    CGFloat xTranslation = 0.0f;
+    CGFloat yTranslation = 0.0f;
+    
+    CGFloat xAnimationInset = 0.0f;
+    CGFloat yAnimationInset1 = 0.0f;
+    CGFloat yAnimationInset2 = 0.0f;
+    
+    switch (_puckLocation) {
+        case LDTPuckViewLocationTopLeft:
+        {
+            xTranslation = movementFactor;
+            yTranslation = movementFactor;
+            xAnimationInset = 80.0f;
+            yAnimationInset1 = 25.0f;
+            yAnimationInset2 = 50.0f;
+            break;
+        }
+        case LDTPuckViewLocationTopRight:
+        {
+            xTranslation = -movementFactor;
+            yTranslation = movementFactor;
+            xAnimationInset = 80.0f;
+            yAnimationInset1 = 25.0f;
+            yAnimationInset2 = 50.0f;
+            break;
+        }
+        case LDTPuckViewLocationBottomLeft:
+        {
+            xTranslation = movementFactor;
+            yTranslation = -movementFactor;
+            xAnimationInset = 80.0f;
+            yAnimationInset1 = -25.0f;
+            yAnimationInset2 = -50.0f;
+            break;
+        }
+        default:
+        {
+            xTranslation = -movementFactor;
+            yTranslation = -movementFactor;
+            xAnimationInset = -80.0f;
+            yAnimationInset1 = -25.0f;
+            yAnimationInset2 = -50.0f;
+            break;
+        }
+    }
+
+    CGPoint startPoint = self.puckView.center;
+    
+    // Create a bezier path with a curve, we'll change it to a CGPath at the end
+    CGPoint endPoint = CGPointMake(startPoint.x + xTranslation, startPoint.y + yTranslation);
+    CGPoint firstCurvePoint = CGPointMake(startPoint.x + xAnimationInset, startPoint.y + yAnimationInset1);
+    CGPoint secondCurvePoint = CGPointMake(startPoint.x + xAnimationInset, startPoint.y + yAnimationInset2);
+
+    UIBezierPath *bezierPath = [UIBezierPath bezierPath];
+    [bezierPath moveToPoint:startPoint];
+    [bezierPath addCurveToPoint:endPoint controlPoint1:firstCurvePoint controlPoint2:secondCurvePoint];
+
+    // Then create a path out of the Bezier Path.
+    CGPathRef curvedPath = bezierPath.CGPath;
+    
+    void (^animations)() = ^{};
+    
+    animations = ^{
+        
+        // Move it out
+        CAKeyframeAnimation *curvedPathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+        curvedPathAnimation.path = curvedPath;
+        curvedPathAnimation.duration = duration / 5.0f;
+        [curvedPathAnimation setCalculationMode:kCAAnimationPaced];
+        [curvedPathAnimation setFillMode:kCAFillModeForwards];
+        curvedPathAnimation.removedOnCompletion = NO;
+        curvedPathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+        [self.puckView.layer addAnimation:curvedPathAnimation forKey:@"positionAnimationToLargeState"];
+        
+        // If you want to move via a translation instead
+//        [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.2f animations:^{
+//            self.puckView.transform = CGAffineTransformMakeTranslation(xTranslation, yTranslation);
+//        }];
+//        
+
+        // Enlarge
+        [UIView addKeyframeWithRelativeStartTime:0.2f relativeDuration:0.2f animations:^{
+            self.puckView.transform = CGAffineTransformScale(self.puckView.transform, 1.5, 1.5);
+        }];
+        
+        // Quickly Shrink
+        [UIView addKeyframeWithRelativeStartTime:0.4f relativeDuration:0.1f animations:^{
+            
+            self.puckView.transform = CGAffineTransformScale(self.puckView.transform, 0.9, 0.9);
+        }];
+        // Quickly enlarge
+        [UIView addKeyframeWithRelativeStartTime:0.5f relativeDuration:0.2f animations:^{
+            
+            self.puckView.transform = CGAffineTransformScale(self.puckView.transform, 1.4, 1.4);
+        }];
+        
+        /// Move it off the screen
+        [UIView addKeyframeWithRelativeStartTime:0.8f relativeDuration:0.1 animations:^{
+            
+            CGAffineTransform transformMove  = CGAffineTransformMakeTranslation(xTranslation * -3, yTranslation * -3);
+            CGAffineTransform transformScale = CGAffineTransformMakeScale(0.0f, 0.0f);
+            
+            CGAffineTransform combo = CGAffineTransformConcat(transformScale, transformMove);
+            self.puckView.transform = combo;
+        }];
+    };
+    
+    [UIView animateKeyframesWithDuration:duration delay:0 options:0 animations:animations
+                              completion:^(BOOL finished) {
+                                  [self.puckView.layer removeAllAnimations];
+                                  self.puckView.center = startPoint;
+                                  self.puckView.transform = CGAffineTransformIdentity;
+                                  self.puckView.alpha = 1.0f;
+                              }];
 }
 
 #pragma mark - LDTPuckViewDelegate
