@@ -53,17 +53,6 @@
     return self;
 }
 
-- (instancetype)initWithDelegate:(id<LDTPuckViewDelegate>)delegate
-{
-    NSParameterAssert(delegate);
-    self = [super init];
-    if (self) {
-        //[self setBackgroundColor:[UIColor redColor]];
-        _delegate = delegate;
-    }
-    return self;
-}
-
 // Setup the layers that will make up the stroke and fill.
 - (void)setup
 {
