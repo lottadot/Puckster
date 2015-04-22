@@ -187,7 +187,25 @@
 
 - (void)movePuckToCurrentLocation
 {
-    self.puckView.center = [self puckCenterForLocation:_puckLocation];
+    [self movePuckAnimated:YES];
+}
+
+- (void)movePuckAnimated:(BOOL)animated
+{
+    void (^animations)() = ^{
+        self.puckView.center = [self puckCenterForLocation:_puckLocation];
+    };
+    
+    if (animated) {
+        [UIView animateWithDuration:0.5f delay:0.0f
+             usingSpringWithDamping:0.6f
+              initialSpringVelocity:0.5f
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:animations
+                         completion:nil];
+    } else {
+        animations();
+    }
 }
 
 #pragma mark - UIGestureRecognizer Events
