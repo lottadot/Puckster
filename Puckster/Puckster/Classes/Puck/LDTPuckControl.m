@@ -304,6 +304,15 @@
 {
     // What window will we show?
     // Where does it get it's content from?
+    
+    UIApplication *appDel = [UIApplication sharedApplication];
+    UIWindow *window = [appDel windows][0];
+    //UIView *view = [window superview];
+    UIViewController *vc = [window rootViewController];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Not Implemented", nil)
+                                                                   message:NSLocalizedString(@"Need another NSCoder", nil) preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Ok", nil) style:UIAlertActionStyleDefault handler:nil]];
+    [vc presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Dismissal
