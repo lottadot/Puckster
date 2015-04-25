@@ -219,6 +219,9 @@
 
 #pragma mark - UIGestureRecognizer Events
 
+/**
+ The Action when the user taps the puck a single time.
+ */
 - (IBAction)puckSingleTapped:(id)sender
 {
     [self expandAnimated:YES];
