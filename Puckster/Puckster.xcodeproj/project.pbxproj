@@ -136,15 +136,24 @@
 		3445662B1AE488EC00EFB52E /* Puck */ = {
 			isa = PBXGroup;
 			children = (
-				3445662C1AE4890800EFB52E /* LDTPuckView.h */,
-				3445662D1AE4890800EFB52E /* LDTPuckView.m */,
-				3445662F1AE4897400EFB52E /* LDTPuckViewDelegate.h */,
 				344566301AE489E100EFB52E /* LDTPuckControl.h */,
 				344566311AE489E100EFB52E /* LDTPuckControl.m */,
 				34D394811AEC2EAA0036D557 /* PuckClassesAndViews */,
 				34D394821AEC30B60036D557 /* Helpers */,
 			);
 			name = Puck;
+			sourceTree = "<group>";
+		};
+		34D394811AEC2EAA0036D557 /* PuckClassesAndViews */ = {
+			isa = PBXGroup;
+			children = (
+				3445662C1AE4890800EFB52E /* LDTPuckView.h */,
+				3445662D1AE4890800EFB52E /* LDTPuckView.m */,
+				3445662F1AE4897400EFB52E /* LDTPuckViewDelegate.h */,
+				34D3947B1AEC27530036D557 /* LDTPuckContentView.h */,
+				34D3947C1AEC27530036D557 /* LDTPuckContentView.m */,
+			);
+			name = PuckClassesAndViews;
 			sourceTree = "<group>";
 		};
 		34D394821AEC30B60036D557 /* Helpers */ = {
@@ -457,6 +466,7 @@
 				344566271AE4883500EFB52E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		344566281AE4883500EFB52E /* Build configuration list for PBXNativeTarget "PucksterTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +475,7 @@
 				3445662A1AE4883500EFB52E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
