@@ -23,11 +23,12 @@
 
 @interface LDTPuckView ()
 
-// Shape layer for the stroke.
+/// Shape layer for the stroke.
 @property (nonatomic, weak) CAShapeLayer *strokeLayer;
 
-// Shape layer for the fill.
+/// Shape layer for the fill.
 @property (nonatomic, weak) CAShapeLayer *fillLayer;
+
 @end
 
 @implementation LDTPuckView
