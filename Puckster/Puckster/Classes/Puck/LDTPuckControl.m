@@ -9,6 +9,8 @@
 #import "LDTPuckControl.h"
 #import "LDTPuckView.h"
 #import "LDTPuckViewDelegate.h"
+#import "LDTPuckContentView.h"
+#import "UIView+LDTPuckAutoLayoutUtil.h"
 
 #define LDTPuckControlWidth 50.0f
 #define LDTPuckControlHeight 50.0f
@@ -28,6 +30,8 @@
 
 @property (nonatomic, assign) id <LDTPuckControlDelegate> delegate;
 @property (nonatomic, assign) id <LDTPuckControlDataSource> dataSource;
+
+@property (nonatomic, strong) LDTPuckContentView *contentView;
 @end
 
 @implementation LDTPuckControl
@@ -67,6 +71,8 @@
     return self;
 }
 
+#pragma mark - iVar's
+
 - (LDTPuckView *)puckView
 {
     if (nil == _puckView) {
@@ -74,6 +80,16 @@
         _puckView = [LDTPuckView new];
     }
     return _puckView;
+}
+
+- (LDTPuckContentView *)contentView
+{
+    if (nil == _contentView) {
+        
+        _contentView = [[LDTPuckContentView alloc] initWithFrame:CGRectZero];
+        [_contentView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    }
+    return _contentView;
 }
 
 - (UITapGestureRecognizer *)singleTapGestureRecognizer
@@ -146,7 +162,6 @@
     }
     return _downVerticalSwipeGestureRecognizer;
 }
-
 
 #pragma mark - Puck Placement
 
@@ -319,15 +334,42 @@
     
     UIApplication *appDel = [UIApplication sharedApplication];
     UIWindow *window = [appDel windows][0];
-    //UIView *view = [window superview];
-    UIViewController *vc = [window rootViewController];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Not Implemented", nil)
-                                                                   message:NSLocalizedString(@"Need another NSCoder", nil) preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Ok", nil) style:UIAlertActionStyleDefault handler:nil]];
-    [vc presentViewController:alert animated:YES completion:nil];
+    __unused UIView *view = [window viewForBaselineLayout]; //superview]; // Should be a better way to do this
+    __unused UIViewController *vc = [window rootViewController];
+//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Not Implemented", nil)
+//                                                                   message:NSLocalizedString(@"Need another NSCoder", nil) preferredStyle:UIAlertControllerStyleAlert];
+//    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Ok", nil) style:UIAlertActionStyleDefault handler:nil]];
+//    [vc presentViewController:alert animated:YES completion:nil];
+    
+    if (nil != self.dataSource) {
+        if ([self.dataSource conformsToProtocol:@protocol(LDTPuckControlDataSource)]) {
+            [self.contentView setContent:[self.dataSource contentViewForPuckControl:self]];
+        }
+    }
+
+    [self.contentView setBackgroundColor:[UIColor redColor]];
+    [view addSubview:self.contentView];
+    [view LDTPinView:self.contentView toContainer:view];
+    
+    // Add gestures to the content view so the user can easily dismiss it.
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissContentViewAnimated:)];
+    [self.contentView addGestureRecognizer:tap];
+    
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc]
+                                       initWithTarget:self
+                                       action:@selector(dismissContentViewAnimated:)];
+    [self.contentView addGestureRecognizer:swipe];
 }
 
 #pragma mark - Dismissal
+
+- (void)dismissContentViewAnimated:(BOOL)animated
+{
+    // TODO
+    [self.contentView removeFromSuperview];
+}
 
 - (void)dismissAnimated:(BOOL)animated
 {
