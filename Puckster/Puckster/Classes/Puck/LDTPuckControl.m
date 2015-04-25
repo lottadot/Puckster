@@ -25,13 +25,21 @@
 @property (nonatomic, strong) UISwipeGestureRecognizer *downVerticalSwipeGestureRecognizer;
 
 @property (nonatomic, assign) LDTPuckViewLocation puckLocation;
+
+@property (nonatomic, assign) id <LDTPuckControlDelegate> delegate;
+@property (nonatomic, assign) id <LDTPuckControlDataSource> dataSource;
 @end
 
 @implementation LDTPuckControl
 
 - (instancetype)initInWindow:(UIWindow *)window withLocation:(LDTPuckViewLocation)location
+                withDelegate:(id <LDTPuckControlDelegate>)delegate
+                  dataSource:(id <LDTPuckControlDataSource>)dataSource
 {
     NSParameterAssert(window);
+    NSParameterAssert(delegate);
+    NSParameterAssert(dataSource);
+    
     self = [super init];
     if (self) {
         

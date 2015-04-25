@@ -18,9 +18,34 @@ typedef enum : NSUInteger {
     LDTPuckViewLocationBottomRight
 } LDTPuckViewLocation;
 
+@class LDTPuckControl;
+
+/**
+ `LDTPuckControlDelegate` protocol defining the interaction between the calling object for events, etc.
+ */
+@protocol LDTPuckControlDelegate <NSObject>
+
+@optional
+
+- (void)didDismissPuckControl:(LDTPuckControl *)puckControl;
+- (void)didSelectPuckWithControl:(LDTPuckControl *)puckControl;
+- (void)didPresentPuckControl:(LDTPuckControl *)puckControl;
+
+@end
+
+/**
+ `LDTPuckControlDataSource` protocol sources for content.
+ */
+@protocol LDTPuckControlDataSource <NSObject>
+
+- (UIView *)contentViewForPuckControl:(LDTPuckControl *)puckControl;
+
+@end
 
 @interface LDTPuckControl : NSObject
 
-- (instancetype)initInWindow:(UIWindow *)window withLocation:(LDTPuckViewLocation)location;
+- (instancetype)initInWindow:(UIWindow *)window withLocation:(LDTPuckViewLocation)location
+                withDelegate:(id <LDTPuckControlDelegate>)delegate
+                  dataSource:(id <LDTPuckControlDataSource>)dataSource;
 
 @end

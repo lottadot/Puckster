@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "LDTPuckControl.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <LDTPuckControlDataSource, LDTPuckControlDelegate>
 @property (nonatomic, strong) LDTPuckControl *puckControl;
 @end
 
@@ -47,7 +47,11 @@
 {
     UIWindow *window = self.window;
     _puckControl = [[LDTPuckControl alloc] initInWindow:window
-                                           withLocation:LDTPuckViewLocationBottomRight];
+                                           withLocation:LDTPuckViewLocationBottomRight withDelegate:self dataSource:self];
 }
+
+#pragma mark - LDTPuckControlDataSource
+
+#pragma mark - LDTPuckControlDelegate
 
 @end
