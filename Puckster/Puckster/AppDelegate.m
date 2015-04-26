@@ -116,6 +116,26 @@
     return YES;
 }
 
+- (void)willPresentPuckWithPuckControl:(LDTPuckControl *)puckControl
+{
+    NSLog(@"willPresent");
+}
+
+- (void)didPresentPuckWithPuckControl:(LDTPuckControl *)puckControl
+{
+    NSLog(@"didPresent");
+}
+
+- (void)didSelectPuckWithPuckControl:(LDTPuckControl *)puckControl
+{
+    NSLog(@"didSelectPuck");
+}
+
+- (void)willDismissPuckWithPuckControl:(LDTPuckControl *)puckControl
+{
+    NSLog(@"willDismiss");
+}
+
 - (void)didDismissPuckWithPuckControl:(LDTPuckControl *)puckControl
 {
     [self performSelector:@selector(killThePuck) withObject:nil afterDelay:.05f];

@@ -199,6 +199,8 @@
     if (nil != self.puckView.superview) {
         return;
     }
+
+    [self delegateWillPresentPuck];
     
     [window addSubview:[self puckView]];
     [_puckView setAutoresizingMask:UIViewAutoresizingNone];
@@ -257,10 +259,12 @@
                                   completion:^(BOOL finished) {
                                       if (finished) {
                                           self.puckView.transform = CGAffineTransformIdentity;
+                                          [self delegateDidPresentPuck];
                                       }
                                   }];
     } else {
         self.puckView.layer.opacity = 1.0f;
+        [self delegateDidPresentPuck];
     }
 }
 
@@ -350,6 +354,7 @@
  */
 - (IBAction)puckSingleTapped:(id)sender
 {
+    [self delegateDidSelectPuck];
     BOOL animated = YES;
     
     if (nil != self.dataSource
@@ -812,6 +817,14 @@
 {
     if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)] && [self.delegate respondsToSelector:@selector(didPresentPuckWithPuckControl:)]) {
         [self.delegate didPresentPuckWithPuckControl:self];
+    }
+}
+
+/// Sent to the Delegate when the user single-taps to select the puck.
+- (void)delegateDidSelectPuck
+{
+    if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)] && [self.delegate respondsToSelector:@selector(didSelectPuckWithPuckControl:)]) {
+        [self.delegate didSelectPuckWithPuckControl:self];
     }
 }
 
