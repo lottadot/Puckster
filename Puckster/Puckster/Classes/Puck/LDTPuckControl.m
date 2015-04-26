@@ -52,8 +52,6 @@
     NSParameterAssert(window);
     NSParameterAssert(delegate);
     NSParameterAssert(dataSource);
-    NSParameterAssert(puckColor);
-    NSParameterAssert(puckBorderColor);
     
     self = [super init];
     if (self) {
