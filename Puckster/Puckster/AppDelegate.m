@@ -20,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self performSelector:@selector(addPuck) withObject:application afterDelay:.05f];
+    [self performSelector:@selector(addPuck) withObject:application afterDelay:2.0f];
 
     return YES;
 }
@@ -59,8 +59,8 @@
                                            withLocation:LDTPuckViewLocationBottomRight
                                            withDelegate:self dataSource:self
                                               puckColor:[UIColor yellowColor]
-                                        puckBorderColor:[UIColor redColor]];
-
+                                        puckBorderColor:[UIColor redColor]
+                                               animated:YES];
 }
 
 #pragma mark - LDTPuckControlDataSource

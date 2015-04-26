@@ -52,6 +52,7 @@
                   dataSource:(id <LDTPuckControlDataSource>)dataSource
                    puckColor:(UIColor *)puckColor
              puckBorderColor:(UIColor *)puckBorderColor
+                    animated:(BOOL)animated
 {
     NSParameterAssert(window);
     NSParameterAssert(delegate);
@@ -72,24 +73,12 @@
         _puckBorderColor = puckBorderColor;
         
         _puckLocation = location;
-        CGPoint center = CGPointMake(CGRectGetMaxY(window.frame), CGRectGetMaxY(window.frame));
         
+        CGPoint center = CGPointMake(CGRectGetMaxY(window.frame), CGRectGetMaxY(window.frame));
         _puckView = [[LDTPuckView alloc] initWithPoint:center withDataSource:self];
         NSAssert(nil != _puckView, nil);
         
-        [window addSubview:[self puckView]];
-        [_puckView setAutoresizingMask:UIViewAutoresizingNone];
-
-        [_puckView setCenter:[self puckCenterForLocation:_puckLocation]];
-        [self.puckView addGestureRecognizer:[self upVerticalSwipeGestureRecognizer]];
-        [self.puckView addGestureRecognizer:[self downVerticalSwipeGestureRecognizer]];
-        [self.puckView addGestureRecognizer:[self leftHorizontalSwipeGestureRecognizer]];
-        [self.puckView addGestureRecognizer:[self rightHorizontalSwipeGestureRecognizer]];
-
-        [self.puckView addGestureRecognizer:[self singleTapGestureRecognizer]];
-        [self.puckView addGestureRecognizer:[self doubleTapGestureRecognizer]];
-        
-        [window bringSubviewToFront:_puckView];
+        [self presentPuckInWindow:window animated:animated];
     }
     
     return self;
@@ -193,6 +182,86 @@
     }
     
     return _downVerticalSwipeGestureRecognizer;
+}
+
+#pragma mark - Puck Presentation
+
+/**
+ Present the puck in the window to the user. If animated, the puck will enlarge and somewhat flex better settling down.
+ */
+- (void)presentPuckInWindow:(UIWindow *)window animated:(BOOL)animated
+{
+    NSParameterAssert(window);
+    
+    if (nil == window) {
+        return;
+    }
+    if (nil != self.puckView.superview) {
+        return;
+    }
+    
+    [window addSubview:[self puckView]];
+    [_puckView setAutoresizingMask:UIViewAutoresizingNone];
+    self.puckView.layer.opacity = 0.0f;
+    
+    [_puckView setCenter:[self puckCenterForLocation:_puckLocation]];
+    [_puckView addGestureRecognizer:[self upVerticalSwipeGestureRecognizer]];
+    [_puckView addGestureRecognizer:[self downVerticalSwipeGestureRecognizer]];
+    [_puckView addGestureRecognizer:[self leftHorizontalSwipeGestureRecognizer]];
+    [_puckView addGestureRecognizer:[self rightHorizontalSwipeGestureRecognizer]];
+    
+    [_puckView addGestureRecognizer:[self singleTapGestureRecognizer]];
+    [_puckView addGestureRecognizer:[self doubleTapGestureRecognizer]];
+    
+    [window bringSubviewToFront:_puckView];
+
+    void (^animations)() = ^{
+
+        // Visible, Enlarge the Puck
+        [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.01f animations:^{
+            self.puckView.layer.opacity = 1.0f;
+        }];
+        
+        [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.3f animations:^{
+            self.puckView.layer.transform = CATransform3DMakeScale(1.4f, 1.4f, 1.0f);
+        }];
+        
+        // Shrink the Puck
+        [UIView addKeyframeWithRelativeStartTime:0.3f relativeDuration:0.2f animations:^{
+            self.puckView.layer.transform = CATransform3DMakeScale(0.8f, 0.8f, 1.0f);
+        }];
+        
+        // Quickly enlarge the Puck but not as much as the first time.
+        [UIView addKeyframeWithRelativeStartTime:0.5f relativeDuration:0.3f animations:^{
+            self.puckView.layer.transform = CATransform3DMakeScale(1.2f, 1.2f, 1.0f);
+        }];
+
+        // Back to near normal size
+        [UIView addKeyframeWithRelativeStartTime:0.8f relativeDuration:0.2f animations:^{
+            self.puckView.layer.transform = CATransform3DMakeScale(0.9f, 0.9f, 1.0f);
+        }];
+    };
+    
+    if (animated) {
+        
+        CGAffineTransform scaleTransform = CGAffineTransformScale(CGAffineTransformIdentity,
+                                                                  0.05f,
+                                                                  0.05f);
+        self.puckView.transform = scaleTransform;
+        NSTimeInterval duration = 0.50f;
+        
+        [UIView animateKeyframesWithDuration:duration
+                                       delay:0.0f
+                                     options:UIViewKeyframeAnimationOptionCalculationModeCubic
+                                  animations:animations
+                                  completion:^(BOOL finished) {
+                                      if (finished) {
+                                          self.puckView.transform = CGAffineTransformIdentity;
+                                      }
+                                  }];
+    } else {
+        self.puckView.layer.opacity = 1.0f;
+    }
 }
 
 #pragma mark - Puck Placement

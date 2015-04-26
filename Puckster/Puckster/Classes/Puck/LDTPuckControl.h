@@ -78,12 +78,14 @@ typedef enum : NSUInteger {
  @param dataSource an object which conforms to the `LDTPuckControlDataSource` protocol which provides information (such as puck color) to the puck Control. Required.
  @param puckColor the `UIColor` of the body of the puck. Optional.
  @param puckBorderColor the `UIColor` of the border around the puck. Optional.
+ @param animated `BOOL` present the puck with animation. Default YES.
  */
 - (instancetype)initInWindow:(UIWindow *)window withLocation:(LDTPuckViewLocation)location
                 withDelegate:(id <LDTPuckControlDelegate>)delegate
                   dataSource:(id <LDTPuckControlDataSource>)dataSource
                    puckColor:(UIColor *)puckColor
-             puckBorderColor:(UIColor *)puckBorderColor;
+             puckBorderColor:(UIColor *)puckBorderColor
+                    animated:(BOOL)animated;
 
 /**
  Dismiss the puck from the screen.
