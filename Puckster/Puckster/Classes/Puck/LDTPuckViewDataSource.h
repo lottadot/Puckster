@@ -8,11 +8,17 @@
 
 @import Foundation;
 
+/**
+ `LDTPuckViewDataSource` protocol sources for puck configuration (ie colors).
+ */
 @protocol LDTPuckViewDataSource <NSObject>
 
 @optional
 
+/// The `UIColor` the puck will be filled with.
 - (UIColor *)puckColor;
+
+/// The `UIColor` the puck will have a border with.
 - (UIColor *)puckBorderColor;
 
 @end
