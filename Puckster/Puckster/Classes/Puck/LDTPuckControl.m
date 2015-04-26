@@ -623,8 +623,6 @@
     return (self.puckLocation == LDTPuckViewLocationBottomLeft || self.puckLocation == LDTPuckViewLocationTopLeft);
 }
 
-#pragma mark - LDTPuckViewDelegate
-
 #pragma mark - Delegate Util
 
 - (void)dataSourceDelegateInvalid
