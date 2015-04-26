@@ -331,50 +331,136 @@
     }
 }
 
-#pragma mark - Expansion
+#pragma mark - Expansion Presenetation of Content View
 
+/**
+ Present the Content view to the user by animating it shrunk, in from the puck's corner, to enlarge it.
+ */
 - (void)presentContentAnimated:(BOOL)animated
 {
-    // What window will we show?
-    // Where does it get it's content from?
-    
     UIApplication *appDel = [UIApplication sharedApplication];
     UIWindow *window = [appDel windows][0];
-    __unused UIView *view = [window viewForBaselineLayout]; //superview]; // Should be a better way to do this
-    __unused UIViewController *vc = [window rootViewController];
-//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Not Implemented", nil)
-//                                                                   message:NSLocalizedString(@"Need another NSCoder", nil) preferredStyle:UIAlertControllerStyleAlert];
-//    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Ok", nil) style:UIAlertActionStyleDefault handler:nil]];
-//    [vc presentViewController:alert animated:YES completion:nil];
+    UIView *view = [window viewForBaselineLayout];
     
+    CGFloat halfWidth = LDTPuckControlWidth / 2.0f;
+    CGFloat halfHeight = LDTPuckControlHeight / 2.0f;
+    CGFloat widthAdjustment = ([self isPuckAtRight]) ? halfWidth : -halfWidth;
+    CGFloat heightAdjustmet = ([self isPuckAtBottom]) ? -halfHeight : halfHeight;
+    
+    // Not really sure why anyone would ever use this and _not_ provide the contentView, may
     if (nil != self.dataSource) {
         if ([self.dataSource conformsToProtocol:@protocol(LDTPuckControlDataSource)]) {
             [self.contentView setContent:[self.dataSource contentViewForPuckControl:self]];
+        } else {
+            [self dataSourceDelegateInvalid];
         }
+    } else {
+        [self dataSourceDelegateInvalid];
     }
 
-    [self.contentView setBackgroundColor:[UIColor redColor]];
+    // So the user cannot see it yet.
+    [self.contentView setAlpha:0.0f];
+    
+    [self.contentView setBackgroundColor:[UIColor clearColor]];
     [view addSubview:self.contentView];
     [view LDTPinView:self.contentView toContainer:view];
-    
+    [view layoutSubviews];
+
     // Add gestures to the content view so the user can easily dismiss it.
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
-                                   action:@selector(dismissContentViewAnimated:)];
+                                   action:@selector(contentViewTapped:)];
     [self.contentView addGestureRecognizer:tap];
+    self.contentView.layer.cornerRadius = 2;
+    self.contentView.clipsToBounds = YES;
     
-    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc]
-                                       initWithTarget:self
-                                       action:@selector(dismissContentViewAnimated:)];
-    [self.contentView addGestureRecognizer:swipe];
+    if (!animated) {
+        [self.contentView setAlpha:0.0f];
+        self.puckView.alpha = 0.0f;
+        return;
+    }
+    
+    CGAffineTransform scaleTransform = CGAffineTransformScale(CGAffineTransformIdentity,
+                                                              0.05f,
+                                                              0.05f);
+    CGAffineTransform moveTransform  = CGAffineTransformTranslate(CGAffineTransformIdentity,
+                                                                  ([self isPuckAtRight] ? window.bounds.size.width : -window.bounds.size.width) + widthAdjustment,
+                                                                  ([self isPuckAtBottom] ? window.bounds.size.height : -window.bounds.size.height) - heightAdjustmet);
+    CGAffineTransform comboTransform = CGAffineTransformConcat(scaleTransform, moveTransform);
+    self.contentView.transform = comboTransform;
+
+    NSTimeInterval duration = 0.5f;
+    [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+
+        self.contentView.transform = CGAffineTransformIdentity;
+        self.contentView.alpha = 1.0f;
+        self.contentView.layer.cornerRadius = 0.0f;
+        self.puckView.alpha = 0.0f;
+        
+    } completion:^(BOOL finished) {
+        
+        if (finished) {
+
+            [self.contentView.layer removeAllAnimations];
+        }
+    }];
 }
 
-#pragma mark - Dismissal
+/**
+ Received by the Content View Tap Gesture Recognizer when the user taps anywhere on the content view.
+ */
+- (void)contentViewTapped:(id)sender
+{
+    [self dismissContentViewAnimated:YES];
+}
 
+#pragma mark - Dismissal Removal of Content View
+
+/**
+ Removes the Content View from the screen.
+ */
 - (void)dismissContentViewAnimated:(BOOL)animated
 {
-    // TODO
-    [self.contentView removeFromSuperview];
+    if (!animated) {
+        [self.contentView removeFromSuperview];
+        self.contentView = nil;
+        self.puckView.alpha = 1.0f;
+        return;
+    }
+    UIApplication *appDel = [UIApplication sharedApplication];
+    UIWindow *window = [appDel windows][0];
+    
+    CGFloat halfWidth = LDTPuckControlWidth / 2.0f;
+    CGFloat halfHeight = LDTPuckControlHeight / 2.0f;
+    CGFloat widthAdjustment = ([self isPuckAtLeft]) ? halfWidth : -halfWidth;
+    CGFloat heightAdjustmet = ([self isPuckAtTop]) ? -halfHeight : halfHeight;
+    
+    CGAffineTransform scaleTransform = CGAffineTransformScale(CGAffineTransformIdentity,
+                                                              0.05f,
+                                                              0.05f);
+    CGAffineTransform moveTransform  = CGAffineTransformTranslate(CGAffineTransformIdentity,
+                                                                  ([self isPuckAtLeft] ? -window.bounds.size.width : window.bounds.size.width) + widthAdjustment,
+                                                                  ([self isPuckAtTop] ? -window.bounds.size.height : window.bounds.size.height) - heightAdjustmet);
+    CGAffineTransform comboTransform = CGAffineTransformConcat(scaleTransform, moveTransform);
+    self.contentView.transform = CGAffineTransformIdentity;
+
+    NSTimeInterval duration = 0.25f;
+    [UIView animateWithDuration:duration delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        
+        self.contentView.transform = comboTransform;
+        self.contentView.alpha = 0.0f;
+        self.contentView.layer.cornerRadius = 0.5f;
+        self.puckView.alpha = 1.0f;
+        
+    } completion:^(BOOL finished) {
+        
+        if (finished) {
+            
+            [self.contentView.layer removeAllAnimations];
+            [self.contentView removeFromSuperview];
+            self.contentView = nil;
+        }
+    }];
 }
 
 - (void)dismissPuckAnimated:(BOOL)animated
