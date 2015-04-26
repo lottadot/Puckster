@@ -27,9 +27,13 @@ typedef enum : NSUInteger {
 
 @optional
 
-- (void)didDismissPuckControl:(LDTPuckControl *)puckControl;
-- (void)didSelectPuckWithControl:(LDTPuckControl *)puckControl;
-- (void)didPresentPuckControl:(LDTPuckControl *)puckControl;
+- (void)willPresentPuckWithPuckControl:(LDTPuckControl *)puckControl;
+- (void)didPresentPuckWithPuckControl:(LDTPuckControl *)puckControl;
+
+- (void)didSelectPuckWithPuckControl:(LDTPuckControl *)puckControl;
+
+- (void)willDismissPuckWithPuckControl:(LDTPuckControl *)puckControl;
+- (void)didDismissPuckWithPuckControl:(LDTPuckControl *)puckControl;
 
 @end
 

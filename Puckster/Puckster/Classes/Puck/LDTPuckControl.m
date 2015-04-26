@@ -396,6 +396,7 @@
  */
 - (void)presentContentAnimated:(BOOL)animated
 {
+    [self delegateWillPresentPuck];
     UIApplication *appDel = [UIApplication sharedApplication];
     UIWindow *window = [appDel windows][0];
     UIView *view = [window viewForBaselineLayout];
@@ -438,6 +439,7 @@
     if (!animated) {
         [self.contentView setAlpha:0.0f];
         self.puckView.alpha = 0.0f;
+        [self delegateDidPresentPuck];
         return;
     }
     
@@ -463,6 +465,7 @@
         if (finished) {
 
             [self.contentView.layer removeAllAnimations];
+            [self delegateDidPresentPuck];
         }
     }];
 }
@@ -526,6 +529,7 @@
 
 - (void)dismissPuckAnimated:(BOOL)animated
 {
+    [self delegateWillDismissPuck];
     NSTimeInterval duration = 1.0f;
     
     /*
@@ -653,6 +657,8 @@
                                       self.puckView.transform = CGAffineTransformIdentity;
                                       self.puckView.alpha = 1.0f;
 #endif
+                                      [self delegateDidDismissPuck];
+                                      
                                   }
                               }];
 }
@@ -707,6 +713,40 @@
         return [self.dataSource puckBorderColor];
     } else {
         return _puckBorderColor;
+    }
+}
+
+#pragma mark - LDTPuckControlDelegate Helpers
+
+/// Sent to the Delegate before we show the puck
+- (void)delegateWillPresentPuck
+{
+    if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)]) {
+        [self.delegate willPresentPuckWithPuckControl:self];
+    }
+}
+
+/// Sent to the Delegate after we have presented the puck.
+- (void)delegateDidPresentPuck
+{
+    if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)]) {
+        [self.delegate didPresentPuckWithPuckControl:self];
+    }
+}
+
+/// Sent to the Delegate before we dismiss the puck.
+- (void)delegateWillDismissPuck
+{
+    if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)]) {
+        [self.delegate willDismissPuckWithPuckControl:self];
+    }
+}
+
+/// Sent to the delegate after we have dismissed the puck.
+- (void)delegateDidDismissPuck
+{
+    if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)]) {
+        [self.delegate didDismissPuckWithPuckControl:self];
     }
 }
 
