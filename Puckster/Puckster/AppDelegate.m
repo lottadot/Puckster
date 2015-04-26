@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "LDTPuckControl.h"
+#import "UIView+LDTPuckAutoLayoutUtil.h"
 
 @interface AppDelegate () <LDTPuckControlDataSource, LDTPuckControlDelegate>
 @property (nonatomic, strong) LDTPuckControl *puckControl;
@@ -47,10 +48,50 @@
 {
     UIWindow *window = self.window;
     _puckControl = [[LDTPuckControl alloc] initInWindow:window
-                                           withLocation:LDTPuckViewLocationBottomRight withDelegate:self dataSource:self];
+                                           withLocation:LDTPuckViewLocationBottomRight
+                                           withDelegate:self
+                                             dataSource:self];
 }
 
 #pragma mark - LDTPuckControlDataSource
+
+- (UIView *)contentViewForPuckControl:(LDTPuckControl *)puckControl
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
+    [view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [view setBackgroundColor:[UIColor blueColor]];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    [label setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [label setText:@"Some information you need"];
+    [label setNumberOfLines:0];
+    [label setTextColor:[UIColor whiteColor]];
+    
+    [view addSubview:label];
+    [view LDTCenterView:label toContainer:view];
+    
+    
+//    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:label
+//                                                                        attribute:NSLayoutAttributeHeight
+//                                                                        relatedBy:NSLayoutRelationEqual
+//                                                                           toItem:view
+//                                                                        attribute:NSLayoutAttributeNotAnAttribute
+//                                                                       multiplier:1.0
+//                                                                         constant:100.0];
+//    [view addConstraint:heightConstraint];
+//    
+//    NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:label
+//                                                                       attribute:NSLayoutAttributeWidth
+//                                                                       relatedBy:NSLayoutRelationEqual
+//                                                                          toItem:view
+//                                                                       attribute:NSLayoutAttributeNotAnAttribute
+//                                                                      multiplier:1.0
+//                                                                        constant:100.0];
+//    [view addConstraint:widthConstraint];
+    
+    [label sizeToFit];
+    return view;
+}
 
 #pragma mark - LDTPuckControlDelegate
 
