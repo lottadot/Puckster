@@ -9,13 +9,11 @@
 #import "LDTPuckView.h"
 #import "LDTPuckViewDataSource.h"
 
-#define LDTPuckViewDefaultWidth  50.0f
-#define LDTPuckViewDefaultHeight 50.0f
+static const CGFloat LDTPuckViewDefaultWidth  = 50.0;
+static const CGFloat LDTPuckViewDefaultHeight = 50.0;
+static const CGFloat LDTPuckViewStrokeWidth   = 3.0f;
 
-#define LDTPuckViewStrokeWidth 3.0f
-
-#define LDTPuckViewDeselectedRadius 22.0f
-#define LDTPuckViewSelectedRadius   50.0f // Go with Radius or width/height? TODO
+static const CGFloat LDTPuckViewDeselectedRadius = 22.0f; // Go with Radius or width/height? TODO
 
 #define LDTPuckViewSelectedStrokeLightColor [UIColor whiteColor]
 #define LDTPuckViewSelectedStrokeDarkColor  [UIColor colorWithWhite:0.27f alpha:1.0f]
