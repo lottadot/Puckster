@@ -53,4 +53,10 @@ typedef enum : NSUInteger {
                    puckColor:(UIColor *)puckColor
              puckBorderColor:(UIColor *)puckBorderColor;
 
+/**
+ Dismiss the puck from the screen.
+ @param animated `BOOL` whether to animate the removal or not.
+ */
+- (void)dismissPuckAnimated:(BOOL)animated;
+
 @end
