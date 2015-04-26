@@ -54,13 +54,15 @@
 
 - (void)addPuck
 {
-    UIWindow *window = self.window;
-    _puckControl = [[LDTPuckControl alloc] initInWindow:window
-                                           withLocation:LDTPuckViewLocationBottomRight
-                                           withDelegate:self dataSource:self
-                                              puckColor:[UIColor yellowColor]
-                                        puckBorderColor:[UIColor redColor]
-                                               animated:YES];
+    if (nil == _puckControl) {
+        UIWindow *window = self.window;
+        _puckControl = [[LDTPuckControl alloc] initInWindow:window
+                                               withLocation:LDTPuckViewLocationBottomRight
+                                               withDelegate:self dataSource:self
+                                                  puckColor:[UIColor yellowColor]
+                                            puckBorderColor:[UIColor redColor]
+                                                   animated:YES];
+    }
 }
 
 #pragma mark - LDTPuckControlDataSource
@@ -113,5 +115,16 @@
 {
     return YES;
 }
+
+- (void)didDismissPuckWithPuckControl:(LDTPuckControl *)puckControl
+{
+    [self performSelector:@selector(killThePuck) withObject:nil afterDelay:.05f];
+}
+
+- (void)killThePuck
+{
+    _puckControl = nil;
+}
+
 
 @end
