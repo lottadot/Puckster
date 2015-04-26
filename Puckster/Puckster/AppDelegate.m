@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "LDTPuckControl.h"
-#import "UIView+LDTPuckAutoLayoutUtil.h"
+#import <PucksterFramework/LDTPuckControl.h>
+#import <PucksterFramework/UIView+LDTPuckAutoLayoutUtil.h>
 
 @interface AppDelegate () <LDTPuckControlDataSource, LDTPuckControlDelegate>
 @property (nonatomic, strong) LDTPuckControl *puckControl;

@@ -14,10 +14,19 @@
 		344566131AE4883500EFB52E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 344566121AE4883500EFB52E /* Images.xcassets */; };
 		344566161AE4883500EFB52E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 344566141AE4883500EFB52E /* LaunchScreen.xib */; };
 		344566221AE4883500EFB52E /* PucksterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 344566211AE4883500EFB52E /* PucksterTests.m */; };
-		3445662E1AE4890800EFB52E /* LDTPuckView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3445662D1AE4890800EFB52E /* LDTPuckView.m */; };
-		344566321AE489E100EFB52E /* LDTPuckControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 344566311AE489E100EFB52E /* LDTPuckControl.m */; };
-		34D3947D1AEC27530036D557 /* LDTPuckContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D3947C1AEC27530036D557 /* LDTPuckContentView.m */; };
-		34D394801AEC2C910036D557 /* UIView+LDTPuckAutoLayoutUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D3947F1AEC2C910036D557 /* UIView+LDTPuckAutoLayoutUtil.m */; };
+		34D394961AEC77170036D557 /* PucksterFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D394951AEC77170036D557 /* PucksterFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		34D3949C1AEC77170036D557 /* PucksterFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34D394911AEC77170036D557 /* PucksterFramework.framework */; };
+		34D394A51AEC77180036D557 /* PucksterFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D394A41AEC77180036D557 /* PucksterFrameworkTests.m */; };
+		34D394A91AEC77180036D557 /* PucksterFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 34D394911AEC77170036D557 /* PucksterFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		34D394B11AEC774C0036D557 /* LDTPuckControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 344566311AE489E100EFB52E /* LDTPuckControl.m */; };
+		34D394B21AEC77500036D557 /* LDTPuckControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 344566301AE489E100EFB52E /* LDTPuckControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		34D394B31AEC77550036D557 /* LDTPuckView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3445662C1AE4890800EFB52E /* LDTPuckView.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		34D394B41AEC775C0036D557 /* LDTPuckView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3445662D1AE4890800EFB52E /* LDTPuckView.m */; };
+		34D394B51AEC77600036D557 /* LDTPuckViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3445662F1AE4897400EFB52E /* LDTPuckViewDelegate.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		34D394B61AEC77660036D557 /* LDTPuckContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D3947B1AEC27530036D557 /* LDTPuckContentView.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		34D394B71AEC776A0036D557 /* LDTPuckContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D3947C1AEC27530036D557 /* LDTPuckContentView.m */; };
+		34D394B81AEC77700036D557 /* UIView+LDTPuckAutoLayoutUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D3947E1AEC2C910036D557 /* UIView+LDTPuckAutoLayoutUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		34D394B91AEC77760036D557 /* UIView+LDTPuckAutoLayoutUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D3947F1AEC2C910036D557 /* UIView+LDTPuckAutoLayoutUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +37,42 @@
 			remoteGlobalIDString = 344566011AE4883500EFB52E;
 			remoteInfo = Puckster;
 		};
+		34D3949D1AEC77170036D557 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 344565FA1AE4883500EFB52E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 34D394901AEC77170036D557;
+			remoteInfo = PucksterFramework;
+		};
+		34D3949F1AEC77180036D557 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 344565FA1AE4883500EFB52E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 344566011AE4883500EFB52E;
+			remoteInfo = Puckster;
+		};
+		34D394A61AEC77180036D557 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 344565FA1AE4883500EFB52E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 34D394901AEC77170036D557;
+			remoteInfo = PucksterFramework;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		34D394AD1AEC77180036D557 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				34D394A91AEC77180036D557 /* PucksterFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		344566021AE4883500EFB52E /* Puckster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Puckster.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +97,12 @@
 		34D3947C1AEC27530036D557 /* LDTPuckContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LDTPuckContentView.m; path = Classes/Puck/LDTPuckContentView.m; sourceTree = "<group>"; };
 		34D3947E1AEC2C910036D557 /* UIView+LDTPuckAutoLayoutUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+LDTPuckAutoLayoutUtil.h"; path = "Classes/Categories/UIView+LDTPuckAutoLayoutUtil.h"; sourceTree = "<group>"; };
 		34D3947F1AEC2C910036D557 /* UIView+LDTPuckAutoLayoutUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+LDTPuckAutoLayoutUtil.m"; path = "Classes/Categories/UIView+LDTPuckAutoLayoutUtil.m"; sourceTree = "<group>"; };
+		34D394911AEC77170036D557 /* PucksterFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PucksterFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		34D394941AEC77170036D557 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34D394951AEC77170036D557 /* PucksterFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PucksterFramework.h; sourceTree = "<group>"; };
+		34D3949B1AEC77170036D557 /* PucksterFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PucksterFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		34D394A31AEC77180036D557 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34D394A41AEC77180036D557 /* PucksterFrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PucksterFrameworkTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +120,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		34D3948D1AEC77170036D557 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34D394981AEC77170036D557 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34D3949C1AEC77170036D557 /* PucksterFramework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +143,8 @@
 			children = (
 				344566041AE4883500EFB52E /* Puckster */,
 				3445661E1AE4883500EFB52E /* PucksterTests */,
+				34D394921AEC77170036D557 /* PucksterFramework */,
+				34D394A11AEC77180036D557 /* PucksterFrameworkTests */,
 				344566031AE4883500EFB52E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,6 +154,8 @@
 			children = (
 				344566021AE4883500EFB52E /* Puckster.app */,
 				3445661B1AE4883500EFB52E /* PucksterTests.xctest */,
+				34D394911AEC77170036D557 /* PucksterFramework.framework */,
+				34D3949B1AEC77170036D557 /* PucksterFrameworkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,7 +234,57 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		34D394921AEC77170036D557 /* PucksterFramework */ = {
+			isa = PBXGroup;
+			children = (
+				34D394951AEC77170036D557 /* PucksterFramework.h */,
+				34D394931AEC77170036D557 /* Supporting Files */,
+			);
+			path = PucksterFramework;
+			sourceTree = "<group>";
+		};
+		34D394931AEC77170036D557 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				34D394941AEC77170036D557 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		34D394A11AEC77180036D557 /* PucksterFrameworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				34D394A41AEC77180036D557 /* PucksterFrameworkTests.m */,
+				34D394A21AEC77180036D557 /* Supporting Files */,
+			);
+			path = PucksterFrameworkTests;
+			sourceTree = "<group>";
+		};
+		34D394A21AEC77180036D557 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				34D394A31AEC77180036D557 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		34D3948E1AEC77170036D557 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34D394B51AEC77600036D557 /* LDTPuckViewDelegate.h in Headers */,
+				34D394B21AEC77500036D557 /* LDTPuckControl.h in Headers */,
+				34D394B81AEC77700036D557 /* UIView+LDTPuckAutoLayoutUtil.h in Headers */,
+				34D394961AEC77170036D557 /* PucksterFramework.h in Headers */,
+				34D394B31AEC77550036D557 /* LDTPuckView.h in Headers */,
+				34D394B61AEC77660036D557 /* LDTPuckContentView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		344566011AE4883500EFB52E /* Puckster */ = {
@@ -175,10 +294,12 @@
 				344565FE1AE4883500EFB52E /* Sources */,
 				344565FF1AE4883500EFB52E /* Frameworks */,
 				344566001AE4883500EFB52E /* Resources */,
+				34D394AD1AEC77180036D557 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				34D394A71AEC77180036D557 /* PBXTargetDependency */,
 			);
 			name = Puckster;
 			productName = Puckster;
@@ -203,6 +324,43 @@
 			productReference = 3445661B1AE4883500EFB52E /* PucksterTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		34D394901AEC77170036D557 /* PucksterFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34D394AA1AEC77180036D557 /* Build configuration list for PBXNativeTarget "PucksterFramework" */;
+			buildPhases = (
+				34D3948C1AEC77170036D557 /* Sources */,
+				34D3948D1AEC77170036D557 /* Frameworks */,
+				34D3948E1AEC77170036D557 /* Headers */,
+				34D3948F1AEC77170036D557 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PucksterFramework;
+			productName = PucksterFramework;
+			productReference = 34D394911AEC77170036D557 /* PucksterFramework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		34D3949A1AEC77170036D557 /* PucksterFrameworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34D394AE1AEC77180036D557 /* Build configuration list for PBXNativeTarget "PucksterFrameworkTests" */;
+			buildPhases = (
+				34D394971AEC77170036D557 /* Sources */,
+				34D394981AEC77170036D557 /* Frameworks */,
+				34D394991AEC77170036D557 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				34D3949E1AEC77170036D557 /* PBXTargetDependency */,
+				34D394A01AEC77180036D557 /* PBXTargetDependency */,
+			);
+			name = PucksterFrameworkTests;
+			productName = PucksterFrameworkTests;
+			productReference = 34D3949B1AEC77170036D557 /* PucksterFrameworkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -217,6 +375,13 @@
 					};
 					3445661A1AE4883500EFB52E = {
 						CreatedOnToolsVersion = 6.3;
+						TestTargetID = 344566011AE4883500EFB52E;
+					};
+					34D394901AEC77170036D557 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					34D3949A1AEC77170036D557 = {
+						CreatedOnToolsVersion = 6.3.1;
 						TestTargetID = 344566011AE4883500EFB52E;
 					};
 				};
@@ -236,6 +401,8 @@
 			targets = (
 				344566011AE4883500EFB52E /* Puckster */,
 				3445661A1AE4883500EFB52E /* PucksterTests */,
+				34D394901AEC77170036D557 /* PucksterFramework */,
+				34D3949A1AEC77170036D557 /* PucksterFrameworkTests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,6 +425,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		34D3948F1AEC77170036D557 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34D394991AEC77170036D557 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -265,12 +446,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34D3947D1AEC27530036D557 /* LDTPuckContentView.m in Sources */,
-				34D394801AEC2C910036D557 /* UIView+LDTPuckAutoLayoutUtil.m in Sources */,
 				3445660E1AE4883500EFB52E /* ViewController.m in Sources */,
-				344566321AE489E100EFB52E /* LDTPuckControl.m in Sources */,
 				3445660B1AE4883500EFB52E /* AppDelegate.m in Sources */,
-				3445662E1AE4890800EFB52E /* LDTPuckView.m in Sources */,
 				344566081AE4883500EFB52E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +460,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		34D3948C1AEC77170036D557 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34D394B71AEC776A0036D557 /* LDTPuckContentView.m in Sources */,
+				34D394B91AEC77760036D557 /* UIView+LDTPuckAutoLayoutUtil.m in Sources */,
+				34D394B41AEC775C0036D557 /* LDTPuckView.m in Sources */,
+				34D394B11AEC774C0036D557 /* LDTPuckControl.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34D394971AEC77170036D557 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34D394A51AEC77180036D557 /* PucksterFrameworkTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -290,6 +486,21 @@
 			isa = PBXTargetDependency;
 			target = 344566011AE4883500EFB52E /* Puckster */;
 			targetProxy = 3445661C1AE4883500EFB52E /* PBXContainerItemProxy */;
+		};
+		34D3949E1AEC77170036D557 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 34D394901AEC77170036D557 /* PucksterFramework */;
+			targetProxy = 34D3949D1AEC77170036D557 /* PBXContainerItemProxy */;
+		};
+		34D394A01AEC77180036D557 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 344566011AE4883500EFB52E /* Puckster */;
+			targetProxy = 34D3949F1AEC77180036D557 /* PBXContainerItemProxy */;
+		};
+		34D394A71AEC77180036D557 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 34D394901AEC77170036D557 /* PucksterFramework */;
+			targetProxy = 34D394A61AEC77180036D557 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -447,6 +658,80 @@
 			};
 			name = Release;
 		};
+		34D394AB1AEC77180036D557 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PucksterFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		34D394AC1AEC77180036D557 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = PucksterFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		34D394AF1AEC77180036D557 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PucksterFrameworkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Puckster.app/Puckster";
+			};
+			name = Debug;
+		};
+		34D394B01AEC77180036D557 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PucksterFrameworkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Puckster.app/Puckster";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -476,6 +761,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		34D394AA1AEC77180036D557 /* Build configuration list for PBXNativeTarget "PucksterFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34D394AB1AEC77180036D557 /* Debug */,
+				34D394AC1AEC77180036D557 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		34D394AE1AEC77180036D557 /* Build configuration list for PBXNativeTarget "PucksterFrameworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34D394AF1AEC77180036D557 /* Debug */,
+				34D394B01AEC77180036D557 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
