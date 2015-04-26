@@ -20,4 +20,6 @@
  */
 - (void)LDTPinView:(UIView *)view toContainer:(UIView *)container;
 
+- (void)LDTCenterView:(UIView *)view toContainer:(UIView *)container;
+
 @end

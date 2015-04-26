@@ -34,4 +34,32 @@
     }
 }
 
+- (void)LDTCenterView:(UIView *)view toContainer:(UIView *)container
+{
+    NSParameterAssert(view);
+    NSParameterAssert(container);
+    
+    if (nil != view && nil != container) {
+        // Center Vertically
+        NSLayoutConstraint *centerYConstraint = [NSLayoutConstraint constraintWithItem:view
+                                                                             attribute:NSLayoutAttributeCenterY
+                                                                             relatedBy:NSLayoutRelationEqual
+                                                                                toItem:container
+                                                                             attribute:NSLayoutAttributeCenterY
+                                                                            multiplier:1.0
+                                                                              constant:0.0];
+        [container addConstraint:centerYConstraint];
+        
+        // Center Horizontally
+        NSLayoutConstraint *centerXConstraint = [NSLayoutConstraint constraintWithItem:view
+                                                                             attribute:NSLayoutAttributeCenterX
+                                                                             relatedBy:NSLayoutRelationEqual
+                                                                                toItem:container
+                                                                             attribute:NSLayoutAttributeCenterX
+                                                                            multiplier:1.0
+                                                                              constant:0.0];
+        [container addConstraint:centerXConstraint];
+    }
+}
+
 @end
