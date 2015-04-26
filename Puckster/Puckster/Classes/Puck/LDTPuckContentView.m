@@ -62,7 +62,23 @@
 
 - (void)setContent:(UIView *)contentView
 {
-    // TODO
+    if (nil == contentView) {
+        if (nil != _contentView) {
+            [_contentView removeFromSuperview];
+            return;
+        }
+    } else {
+        
+        if (_contentView == contentView) {
+            return;
+        }
+        
+        [_contentView removeFromSuperview];
+        _contentView = contentView;
+
+        [self addSubview:_contentView];
+        [self LDTPinView:_contentView toContainer:self];
+    }
 }
 
 @end
