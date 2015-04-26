@@ -526,5 +526,12 @@
 
 #pragma mark - LDTPuckViewDelegate
 
+#pragma mark - Delegate Util
+
+- (void)dataSourceDelegateInvalid
+{
+    [NSException raise:@"LDTPuckControlDataSource" format:@"Delegate must be wired up!"];
+}
+
 
 @end
