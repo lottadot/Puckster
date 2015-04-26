@@ -56,12 +56,7 @@
     return _contentContainerView;
 }
 
-#pragma mark - Drawing
-
-- (void)drawRect:(CGRect)rect
-{
-    // TODO Maybe a custom shape or something
-}
+#pragma mark - Public Methods
 
 - (void)setContent:(UIView *)contentView
 {
