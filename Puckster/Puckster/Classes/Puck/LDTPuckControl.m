@@ -196,15 +196,17 @@
     switch (location) {
         case LDTPuckViewLocationTopLeft:
         {
+            CGFloat statusHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
             CGPoint point = CGPointMake(CGRectGetMinX(windowFrame) + XOffset,
-                                        CGRectGetMinY(windowFrame) + YOffset);
+                                        CGRectGetMinY(windowFrame) + YOffset + statusHeight);
             return point;
             break;
         }
         case LDTPuckViewLocationTopRight:
         {
+            CGFloat statusHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
             CGPoint point = CGPointMake(CGRectGetMaxX(windowFrame) - XOffset,
-                                        CGRectGetMinY(windowFrame) + YOffset);
+                                        CGRectGetMinY(windowFrame) + YOffset + statusHeight);
             return point;
             break;
         }
@@ -370,11 +372,14 @@
     UIApplication *appDel = [UIApplication sharedApplication];
     UIWindow *window = [appDel windows][0];
     UIView *view = [window viewForBaselineLayout];
+    __unused UIViewController *vc = [window rootViewController];
     
     CGFloat halfWidth = LDTPuckControlWidth / 2.0f;
     CGFloat halfHeight = LDTPuckControlHeight / 2.0f;
     CGFloat widthAdjustment = ([self isPuckAtRight]) ? halfWidth : -halfWidth;
     CGFloat heightAdjustmet = ([self isPuckAtBottom]) ? -halfHeight : halfHeight;
+    
+    CGFloat windowHeight = window.bounds.size.height;
     
     // Not really sure why anyone would ever use this and _not_ provide the contentView, may
     if (nil != self.dataSource) {
@@ -414,7 +419,7 @@
                                                               0.05f);
     CGAffineTransform moveTransform  = CGAffineTransformTranslate(CGAffineTransformIdentity,
                                                                   ([self isPuckAtRight] ? window.bounds.size.width : -window.bounds.size.width) + widthAdjustment,
-                                                                  ([self isPuckAtBottom] ? window.bounds.size.height : -window.bounds.size.height) - heightAdjustmet);
+                                                                  ([self isPuckAtBottom] ? windowHeight : -windowHeight) - heightAdjustmet);
     CGAffineTransform comboTransform = CGAffineTransformConcat(scaleTransform, moveTransform);
     self.contentView.transform = comboTransform;
 
