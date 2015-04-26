@@ -502,6 +502,28 @@
                               }];
 }
 
+#pragma mark - Animation And Location Helpers
+
+- (BOOL)isPuckAtTop
+{
+    return (self.puckLocation == LDTPuckViewLocationTopLeft || self.puckLocation == LDTPuckViewLocationTopRight);
+}
+
+- (BOOL)isPuckAtBottom
+{
+    return (self.puckLocation == LDTPuckViewLocationBottomLeft || self.puckLocation == LDTPuckViewLocationBottomRight);
+}
+
+- (BOOL)isPuckAtRight
+{
+    return (self.puckLocation == LDTPuckViewLocationBottomRight || self.puckLocation == LDTPuckViewLocationTopRight);
+}
+
+- (BOOL)isPuckAtLeft
+{
+    return (self.puckLocation == LDTPuckViewLocationBottomLeft || self.puckLocation == LDTPuckViewLocationTopLeft);
+}
+
 #pragma mark - LDTPuckViewDelegate
 
 
