@@ -10,7 +10,7 @@
 
 @protocol LDTPuckViewDataSource <NSObject>
 
-@optional;
+@optional
 
 - (UIColor *)puckColor;
 - (UIColor *)puckBorderColor;
