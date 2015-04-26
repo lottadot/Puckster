@@ -38,15 +38,29 @@ typedef enum : NSUInteger {
  */
 @protocol LDTPuckControlDataSource <NSObject>
 
+/// Provide the puck control content to display when the user taps the puck.
 - (UIView *)contentViewForPuckControl:(LDTPuckControl *)puckControl;
 
 @optional
+
+/// Tell the puck control the puck's body color.
 - (UIColor *)puckColor;
+
+/// Tell the puck control the puck's border color.
+- (UIColor *)puckBorderColor;
 
 @end
 
 @interface LDTPuckControl : NSObject
 
+/**
+ Creates a puck Contol in the provided window at the specified location.
+ @param location an `LDTPuckViewLocation` intended to indicate the initial location of the puck. Required.
+ @param delegate an object which conforms to the `LDTPuckControlDelegate` protocol to relay events and information to the puck control owner. Required.
+ @param dataSource an object which conforms to the `LDTPuckControlDataSource` protocol which provides information (such as puck color) to the puck Control. Required.
+ @param puckColor the `UIColor` of the body of the puck. Optional.
+ @param puckBorderColor the `UIColor` of the border around the puck. Optional.
+ */
 - (instancetype)initInWindow:(UIWindow *)window withLocation:(LDTPuckViewLocation)location
                 withDelegate:(id <LDTPuckControlDelegate>)delegate
                   dataSource:(id <LDTPuckControlDataSource>)dataSource
