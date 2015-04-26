@@ -29,7 +29,7 @@
 @property (nonatomic, strong) UISwipeGestureRecognizer *upVerticalSwipeGestureRecognizer;
 @property (nonatomic, strong) UISwipeGestureRecognizer *downVerticalSwipeGestureRecognizer;
 
-/// The current location of the Puck. So we know where it is onscreen, logically.
+/// The current location of the Puck. So we know where it is onscreen, logically. Default is bottom right.
 @property (nonatomic, assign) LDTPuckViewLocation puckLocation;
 
 @property (nonatomic, assign) id <LDTPuckControlDelegate> delegate;
@@ -86,7 +86,6 @@
 
         [self.puckView addGestureRecognizer:[self singleTapGestureRecognizer]];
         [self.puckView addGestureRecognizer:[self doubleTapGestureRecognizer]];
-        //[[self puckView] setNeedsLayout];
         
         [window bringSubviewToFront:_puckView];
     }
@@ -208,7 +207,7 @@
     switch (location) {
         case LDTPuckViewLocationTopLeft:
         {
-            CGFloat statusHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+            CGFloat statusHeight = CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
             CGPoint point = CGPointMake(CGRectGetMinX(windowFrame) + XOffset,
                                         CGRectGetMinY(windowFrame) + YOffset + statusHeight);
             
@@ -218,7 +217,7 @@
         }
         case LDTPuckViewLocationTopRight:
         {
-            CGFloat statusHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+            CGFloat statusHeight = CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
             CGPoint point = CGPointMake(CGRectGetMaxX(windowFrame) - XOffset,
                                         CGRectGetMinY(windowFrame) + YOffset + statusHeight);
             
@@ -407,7 +406,8 @@
     CGFloat widthAdjustment = ([self isPuckAtRight]) ? halfWidth : -halfWidth;
     CGFloat heightAdjustmet = ([self isPuckAtBottom]) ? -halfHeight : halfHeight;
     
-    CGFloat windowHeight = window.bounds.size.height;
+    CGFloat windowHeight = CGRectGetHeight(window.bounds);
+    CGFloat windowWidth  = CGRectGetWidth(window.bounds);
     
     // Not really sure why anyone would ever use this and _not_ provide the contentView, may
     if (nil != self.dataSource) {
@@ -447,7 +447,7 @@
                                                               0.05f,
                                                               0.05f);
     CGAffineTransform moveTransform  = CGAffineTransformTranslate(CGAffineTransformIdentity,
-                                                                  ([self isPuckAtRight] ? window.bounds.size.width : -window.bounds.size.width) + widthAdjustment,
+                                                                  ([self isPuckAtRight] ? windowWidth : -windowWidth) + widthAdjustment,
                                                                   ([self isPuckAtBottom] ? windowHeight : -windowHeight) - heightAdjustmet);
     CGAffineTransform comboTransform = CGAffineTransformConcat(scaleTransform, moveTransform);
     self.contentView.transform = comboTransform;
@@ -499,12 +499,15 @@
     CGFloat widthAdjustment = ([self isPuckAtLeft]) ? halfWidth : -halfWidth;
     CGFloat heightAdjustmet = ([self isPuckAtTop]) ? -halfHeight : halfHeight;
     
+    CGFloat windowHeight = CGRectGetHeight(window.bounds);
+    CGFloat windowWidth  = CGRectGetWidth(window.bounds);
+    
     CGAffineTransform scaleTransform = CGAffineTransformScale(CGAffineTransformIdentity,
                                                               0.05f,
                                                               0.05f);
     CGAffineTransform moveTransform  = CGAffineTransformTranslate(CGAffineTransformIdentity,
-                                                                  ([self isPuckAtLeft] ? -window.bounds.size.width : window.bounds.size.width) + widthAdjustment,
-                                                                  ([self isPuckAtTop] ? -window.bounds.size.height : window.bounds.size.height) - heightAdjustmet);
+                                                                  ([self isPuckAtLeft] ? -windowWidth : windowWidth) + widthAdjustment,
+                                                                  ([self isPuckAtTop] ? -windowHeight : windowHeight) - heightAdjustmet);
     CGAffineTransform comboTransform = CGAffineTransformConcat(scaleTransform, moveTransform);
     self.contentView.transform = CGAffineTransformIdentity;
 
@@ -612,7 +615,7 @@
     
     animations = ^{
         
-        // Move it out
+        // Move the Puck from the corner towards screen.center, with a curved path.
         CAKeyframeAnimation *curvedPathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
         curvedPathAnimation.path = curvedPath;
         curvedPathAnimation.duration = duration / 5.0f;
@@ -622,29 +625,29 @@
         curvedPathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
         [self.puckView.layer addAnimation:curvedPathAnimation forKey:@"positionAnimationToLargeState"];
         
-        // If you want to move via a translation instead
+        // If you want to move via a translation in a straight line instead
 //        [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.2f animations:^{
 //            self.puckView.transform = CGAffineTransformMakeTranslation(xTranslation, yTranslation);
 //        }];
 //        
 
-        // Enlarge
+        // Enlarge the Puck
         [UIView addKeyframeWithRelativeStartTime:0.2f relativeDuration:0.2f animations:^{
             self.puckView.transform = CGAffineTransformScale(self.puckView.transform, 1.5, 1.5);
         }];
         
-        // Quickly Shrink
+        // Quickly Shrink the Puck
         [UIView addKeyframeWithRelativeStartTime:0.4f relativeDuration:0.1f animations:^{
             
             self.puckView.transform = CGAffineTransformScale(self.puckView.transform, 0.9, 0.9);
         }];
-        // Quickly enlarge
+        // Quickly enlarge the Puck but not as much as the first time.
         [UIView addKeyframeWithRelativeStartTime:0.5f relativeDuration:0.2f animations:^{
             
             self.puckView.transform = CGAffineTransformScale(self.puckView.transform, 1.4, 1.4);
         }];
         
-        /// Move it off the screen
+        /// Move the Puck off the screen
         [UIView addKeyframeWithRelativeStartTime:0.8f relativeDuration:0.1 animations:^{
             
             CGAffineTransform transformMove  = CGAffineTransformMakeTranslation(xTranslation * -3, yTranslation * -3);
