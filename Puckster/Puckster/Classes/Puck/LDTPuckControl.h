@@ -49,6 +49,9 @@ typedef enum : NSUInteger {
 /// Tell the puck control the puck's border color.
 - (UIColor *)puckBorderColor;
 
+/// Tell the puck control whether it should animate display of content.
+- (BOOL)shouldAnimatContentDisplayWithPuckControl:(LDTPuckControl *)puckControl;
+
 @end
 
 @interface LDTPuckControl : NSObject

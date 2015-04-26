@@ -258,6 +258,14 @@
  */
 - (IBAction)puckSingleTapped:(id)sender
 {
+    BOOL animated = YES;
+    
+    if (nil != self.dataSource
+        && [self.dataSource conformsToProtocol:@protocol(LDTPuckControlDataSource)]
+        && [self.dataSource respondsToSelector:@selector(shouldAnimatContentDisplayWithPuckControl:)]) {
+        animated = [self.dataSource shouldAnimatContentDisplayWithPuckControl:self];
+    }
+    
     [self presentContentAnimated:YES];
 }
 
