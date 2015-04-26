@@ -530,6 +530,13 @@
 - (void)dismissPuckAnimated:(BOOL)animated
 {
     [self delegateWillDismissPuck];
+    
+    if (!animated) {
+        [self.puckView removeFromSuperview];
+        [self delegateDidDismissPuck];
+        return;
+    }
+    
     NSTimeInterval duration = 1.0f;
     
     /*
