@@ -8,14 +8,14 @@
 
 #import "LDTPuckControl.h"
 #import "LDTPuckView.h"
-#import "LDTPuckViewDelegate.h"
+#import "LDTPuckViewDataSource.h"
 #import "LDTPuckContentView.h"
 #import "UIView+LDTPuckAutoLayoutUtil.h"
 
 #define LDTPuckControlWidth 50.0f
 #define LDTPuckControlHeight 50.0f
 
-@interface LDTPuckControl () <LDTPuckViewDelegate>
+@interface LDTPuckControl () <LDTPuckViewDataSource>
 
 /// The `LDTPuckView` the use will pan around and tap.
 @property (nonatomic, strong) LDTPuckView *puckView;
@@ -35,6 +35,10 @@
 
 /// The `LDTPuckContentView` that will be shown to the user.
 @property (nonatomic, strong) LDTPuckContentView *contentView;
+
+@property (nonatomic, strong) UIColor *puckColor;
+@property (nonatomic, strong) UIColor *puckBorderColor;
+
 @end
 
 @implementation LDTPuckControl
@@ -42,21 +46,27 @@
 - (instancetype)initInWindow:(UIWindow *)window withLocation:(LDTPuckViewLocation)location
                 withDelegate:(id <LDTPuckControlDelegate>)delegate
                   dataSource:(id <LDTPuckControlDataSource>)dataSource
+                   puckColor:(UIColor *)puckColor
+             puckBorderColor:(UIColor *)puckBorderColor
 {
     NSParameterAssert(window);
     NSParameterAssert(delegate);
     NSParameterAssert(dataSource);
+    NSParameterAssert(puckColor);
+    NSParameterAssert(puckBorderColor);
     
     self = [super init];
     if (self) {
         
         _delegate = delegate;
         _dataSource = dataSource;
+        _puckColor = puckColor;
+        _puckBorderColor = puckBorderColor;
         
         _puckLocation = location;
         CGPoint center = CGPointMake(CGRectGetMaxY(window.frame),CGRectGetMaxY(window.frame));
         
-        _puckView = [[LDTPuckView alloc] initWithPoint:center withDelegate:self];
+        _puckView = [[LDTPuckView alloc] initWithPoint:center withDataSource:self];
         NSAssert(nil != _puckView, nil);
         
         [window addSubview:[self puckView]];
@@ -619,5 +629,16 @@
     [NSException raise:@"LDTPuckControlDataSource" format:@"Delegate must be wired up!"];
 }
 
+#pragma mark - LDTPuckViewDataSource
+
+- (UIColor *)puckColor
+{
+    return _puckColor;
+}
+
+- (UIColor *)puckBorderColor
+{
+    return _puckBorderColor;
+}
 
 @end

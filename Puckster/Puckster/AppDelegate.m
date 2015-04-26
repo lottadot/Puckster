@@ -49,8 +49,10 @@
     UIWindow *window = self.window;
     _puckControl = [[LDTPuckControl alloc] initInWindow:window
                                            withLocation:LDTPuckViewLocationBottomRight
-                                           withDelegate:self
-                                             dataSource:self];
+                                           withDelegate:self dataSource:self
+                                              puckColor:[UIColor yellowColor]
+                                        puckBorderColor:[UIColor redColor]];
+
 }
 
 #pragma mark - LDTPuckControlDataSource

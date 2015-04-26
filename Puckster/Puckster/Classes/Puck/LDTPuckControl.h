@@ -40,12 +40,17 @@ typedef enum : NSUInteger {
 
 - (UIView *)contentViewForPuckControl:(LDTPuckControl *)puckControl;
 
+@optional
+- (UIColor *)puckColor;
+
 @end
 
 @interface LDTPuckControl : NSObject
 
 - (instancetype)initInWindow:(UIWindow *)window withLocation:(LDTPuckViewLocation)location
                 withDelegate:(id <LDTPuckControlDelegate>)delegate
-                  dataSource:(id <LDTPuckControlDataSource>)dataSource;
+                  dataSource:(id <LDTPuckControlDataSource>)dataSource
+                   puckColor:(UIColor *)puckColor
+             puckBorderColor:(UIColor *)puckBorderColor;
 
 @end

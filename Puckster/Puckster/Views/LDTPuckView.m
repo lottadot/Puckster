@@ -7,7 +7,7 @@
 //
 
 #import "LDTPuckView.h"
-#import "LDTPuckViewDelegate.h"
+#import "LDTPuckViewDataSource.h"
 
 #define LDTPuckViewDefaultWidth  50.0f
 #define LDTPuckViewDefaultHeight 50.0f
@@ -33,7 +33,7 @@
 
 @implementation LDTPuckView
 
-- (instancetype)initWithPoint:(CGPoint)point withDelegate:(id<LDTPuckViewDelegate>)delegate
+- (instancetype)initWithPoint:(CGPoint)point withDataSource:(id<LDTPuckViewDataSource>)delegate
 {
     CGRect frame = CGRectMake(point.x - LDTPuckViewDefaultWidth,
                               point.y - LDTPuckViewDefaultHeight,
@@ -42,13 +42,13 @@
     return [self initWithFrame:frame withDelegate:delegate];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame withDelegate:(id<LDTPuckViewDelegate>)delegate
+- (instancetype)initWithFrame:(CGRect)frame withDelegate:(id<LDTPuckViewDataSource>)delegate
 {
     NSParameterAssert(delegate);
     self = [super initWithFrame:frame];
     if (self) {
         //[self setBackgroundColor:[UIColor redColor]];
-        _delegate = delegate;
+        _dataSource = delegate;
         [self setup];
     }
     return self;
@@ -65,7 +65,18 @@
                                                           startAngle:0 endAngle:(CGFloat)(2 * M_PI)
                                                            clockwise:YES];
     strokeLayer.path = [strokePath CGPath];
-    strokeLayer.fillColor = [LDTPuckViewDeselectedStrokeColor CGColor];
+    
+    UIColor *strokeFillColor = LDTPuckViewDeselectedStrokeColor;
+    
+    if (nil != self.dataSource) {
+        if ([self.dataSource conformsToProtocol:@protocol(LDTPuckViewDataSource)]) {
+            if ([self.dataSource respondsToSelector:@selector(puckBorderColor)]) {
+                strokeFillColor = [self.dataSource puckBorderColor];
+            }
+        }
+    }
+    
+    strokeLayer.fillColor = [strokeFillColor CGColor];
     strokeLayer.bounds = self.bounds;
     strokeLayer.position = center;
     
@@ -78,7 +89,18 @@
                                                         startAngle:0 endAngle:(CGFloat)(2 * M_PI)
                                                          clockwise:YES];
     fillLayer.path = [fillPath CGPath];
-    fillLayer.fillColor = [[UIColor colorWithRed:0.97 green:0.45 blue:0.07 alpha:1.0] CGColor];
+    
+    UIColor *fillColor = [UIColor colorWithRed:0.97 green:0.45 blue:0.07 alpha:1.0];
+    
+    if (nil != self.dataSource) {
+        if ([self.dataSource conformsToProtocol:@protocol(LDTPuckViewDataSource)]) {
+            if ([self.dataSource respondsToSelector:@selector(puckColor)]) {
+                fillColor = [self.dataSource puckColor];
+            }
+        }
+    }
+    
+    fillLayer.fillColor = [fillColor CGColor];
     fillLayer.bounds = self.bounds;
     fillLayer.position = center;
     [self.layer addSublayer:fillLayer];

@@ -1,5 +1,5 @@
 //
-//  LDTPuckViewDelegate.h
+//  LDTPuckViewDataSource.h
 //  Puckster
 //
 //  Created by Shane Zatezalo on 4/19/15.
@@ -8,6 +8,11 @@
 
 @import Foundation;
 
-@protocol LDTPuckViewDelegate <NSObject>
+@protocol LDTPuckViewDataSource <NSObject>
+
+@optional;
+
+- (UIColor *)puckColor;
+- (UIColor *)puckBorderColor;
 
 @end
