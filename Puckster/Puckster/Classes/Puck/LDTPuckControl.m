@@ -47,6 +47,9 @@
     self = [super init];
     if (self) {
         
+        _delegate = delegate;
+        _dataSource = dataSource;
+        
         _puckLocation = location;
         CGPoint center = CGPointMake(CGRectGetMaxY(window.frame),CGRectGetMaxY(window.frame));
         
