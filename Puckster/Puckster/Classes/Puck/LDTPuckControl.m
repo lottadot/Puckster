@@ -17,20 +17,23 @@
 
 @interface LDTPuckControl () <LDTPuckViewDelegate>
 
+/// The `LDTPuckView` the use will pan around and tap.
 @property (nonatomic, strong) LDTPuckView *puckView;
+
 @property (nonatomic, strong) UITapGestureRecognizer *singleTapGestureRecognizer;
 @property (nonatomic, strong) UITapGestureRecognizer *doubleTapGestureRecognizer;
-
 @property (nonatomic, strong) UISwipeGestureRecognizer *rightHorizontalSwipeGestureRecognizer;
 @property (nonatomic, strong) UISwipeGestureRecognizer *leftHorizontalSwipeGestureRecognizer;
 @property (nonatomic, strong) UISwipeGestureRecognizer *upVerticalSwipeGestureRecognizer;
 @property (nonatomic, strong) UISwipeGestureRecognizer *downVerticalSwipeGestureRecognizer;
 
+/// The current location of the Puck. So we know where it is onscreen, logically.
 @property (nonatomic, assign) LDTPuckViewLocation puckLocation;
 
 @property (nonatomic, assign) id <LDTPuckControlDelegate> delegate;
 @property (nonatomic, assign) id <LDTPuckControlDataSource> dataSource;
 
+/// The `LDTPuckContentView` that will be shown to the user.
 @property (nonatomic, strong) LDTPuckContentView *contentView;
 @end
 
