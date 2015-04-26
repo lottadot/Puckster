@@ -53,11 +53,16 @@
     NSParameterAssert(delegate);
     NSParameterAssert(dataSource);
     
+    if (nil == window || nil == delegate || nil == dataSource) {
+        [NSException raise:@"LDTPuckControl" format:@"Window, Delegate and DataSource must be provided."];
+    }
+    
     self = [super init];
     if (self) {
         
         _delegate = delegate;
         _dataSource = dataSource;
+        
         _puckColor = puckColor;
         _puckBorderColor = puckBorderColor;
         
