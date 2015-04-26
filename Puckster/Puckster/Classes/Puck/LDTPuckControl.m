@@ -242,7 +242,7 @@
  */
 - (IBAction)puckSingleTapped:(id)sender
 {
-    [self expandAnimated:YES];
+    [self presentContentAnimated:YES];
 }
 
 - (IBAction)puckDoubleTapped:(id)sender
@@ -330,7 +330,7 @@
 
 #pragma mark - Expansion
 
-- (void)expandAnimated:(BOOL)animated
+- (void)presentContentAnimated:(BOOL)animated
 {
     // What window will we show?
     // Where does it get it's content from?
