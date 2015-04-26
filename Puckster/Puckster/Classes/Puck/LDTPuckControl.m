@@ -250,7 +250,7 @@
 
 - (IBAction)puckDoubleTapped:(id)sender
 {
-    [self dismissAnimated:YES];
+    [self dismissPuckAnimated:YES];
 }
 
 - (IBAction)puckSwipedHorizontallyLeft:(id)sender
@@ -377,7 +377,7 @@
     [self.contentView removeFromSuperview];
 }
 
-- (void)dismissAnimated:(BOOL)animated
+- (void)dismissPuckAnimated:(BOOL)animated
 {
     NSTimeInterval duration = 1.0f;
     
