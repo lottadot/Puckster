@@ -27,18 +27,25 @@ typedef enum : NSUInteger {
 
 @optional
 
+/// Sent immediately before the `LDTPuckControl` will place the puck on the screen.
 - (void)willPresentPuckWithPuckControl:(LDTPuckControl *)puckControl;
+
+/// Sent immediately after the puck `LDTPuckControl` placed the puck on the screen.
 - (void)didPresentPuckWithPuckControl:(LDTPuckControl *)puckControl;
 
+/// Sent when the user taps on the puck.
 - (void)didSelectPuckWithPuckControl:(LDTPuckControl *)puckControl;
 
+/// Sent when the `LDTPuckControl` will remove the puck from the screen.
 - (void)willDismissPuckWithPuckControl:(LDTPuckControl *)puckControl;
+
+/// Sent when the `LDTPuckControl` did remove the puck from the screen.
 - (void)didDismissPuckWithPuckControl:(LDTPuckControl *)puckControl;
 
 @end
 
 /**
- `LDTPuckControlDataSource` protocol sources for content.
+ `LDTPuckControlDataSource` protocol sources for content. ie this is how you provide the `LDTPuckControl` with content to show, etc.
  */
 @protocol LDTPuckControlDataSource <NSObject>
 
@@ -65,6 +72,7 @@ typedef enum : NSUInteger {
 
 /**
  Creates a puck Contol in the provided window at the specified location.
+ 
  @param location an `LDTPuckViewLocation` intended to indicate the initial location of the puck. Required.
  @param delegate an object which conforms to the `LDTPuckControlDelegate` protocol to relay events and information to the puck control owner. Required.
  @param dataSource an object which conforms to the `LDTPuckControlDataSource` protocol which provides information (such as puck color) to the puck Control. Required.
