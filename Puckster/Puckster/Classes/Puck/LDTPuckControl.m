@@ -634,12 +634,24 @@
 
 - (UIColor *)puckColor
 {
-    return _puckColor;
+    if (nil != self.dataSource
+        && [self.dataSource conformsToProtocol:@protocol(LDTPuckControlDataSource)]
+        && [self.dataSource respondsToSelector:@selector(puckColor)]) {
+        return [self.dataSource puckColor];
+    } else {
+        return _puckColor;
+    }
 }
 
 - (UIColor *)puckBorderColor
 {
-    return _puckBorderColor;
+    if (nil != self.dataSource
+        && [self.dataSource conformsToProtocol:@protocol(LDTPuckControlDataSource)]
+        && [self.dataSource respondsToSelector:@selector(puckBorderColor)]) {
+        return [self.dataSource puckBorderColor];
+    } else {
+        return _puckBorderColor;
+    }
 }
 
 @end
