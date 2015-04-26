@@ -20,6 +20,12 @@
  */
 - (void)ldt_pinView:(UIView *)view toContainer:(UIView *)container;
 
+/**
+ Centers a view within another.
+ 
+ @discussion Essentially a macro for easily adding NSLayoutAttributeCenterY and NSLayoutAttributeCenterX.
+ @note assumed already added a subview, etc.
+ */
 - (void)ldt_centerView:(UIView *)view toContainer:(UIView *)container;
 
 @end

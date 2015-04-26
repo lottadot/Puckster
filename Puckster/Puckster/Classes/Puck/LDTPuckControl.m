@@ -32,8 +32,8 @@
 /// The current location of the Puck. So we know where it is onscreen, logically. Default is bottom right.
 @property (nonatomic, assign) LDTPuckViewLocation puckLocation;
 
-@property (nonatomic, assign) id <LDTPuckControlDelegate> delegate;
-@property (nonatomic, assign) id <LDTPuckControlDataSource> dataSource;
+@property (nonatomic, assign) id<LDTPuckControlDelegate> delegate;
+@property (nonatomic, assign) id<LDTPuckControlDataSource> dataSource;
 
 /// The `LDTPuckContentView` that will be shown to the user.
 @property (nonatomic, strong) LDTPuckContentView *contentView;
@@ -44,6 +44,8 @@
 @end
 
 @implementation LDTPuckControl
+
+#pragma mark Lifecycle
 
 - (instancetype)initInWindow:(UIWindow *)window withLocation:(LDTPuckViewLocation)location
                 withDelegate:(id <LDTPuckControlDelegate>)delegate

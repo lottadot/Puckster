@@ -31,6 +31,8 @@ static const CGFloat LDTPuckViewDeselectedRadius = 22.0f; // Go with Radius or w
 
 @implementation LDTPuckView
 
+#pragma mark Lifecycle
+
 - (instancetype)initWithPoint:(CGPoint)point withDataSource:(id<LDTPuckViewDataSource>)delegate
 {
     CGRect frame = CGRectMake(point.x - LDTPuckViewDefaultWidth,
@@ -55,6 +57,8 @@ static const CGFloat LDTPuckViewDeselectedRadius = 22.0f; // Go with Radius or w
     
     return self;
 }
+
+#pragma mark Drawing Setup
 
 // Setup the layers that will make up the stroke and fill.
 - (void)setup
