@@ -15,6 +15,8 @@
 #define LDTPuckControlWidth 50.0f
 #define LDTPuckControlHeight 50.0f
 
+//#define LDTPuckControlDismissDebug 1
+
 @interface LDTPuckControl () <LDTPuckViewDataSource>
 
 /// The `LDTPuckView` the use will pan around and tap.
@@ -644,10 +646,14 @@
     
     [UIView animateKeyframesWithDuration:duration delay:0 options:0 animations:animations
                               completion:^(BOOL finished) {
-                                  [self.puckView.layer removeAllAnimations];
-                                  self.puckView.center = startPoint;
-                                  self.puckView.transform = CGAffineTransformIdentity;
-                                  self.puckView.alpha = 1.0f;
+                                  if (finished) {
+#ifdef LDTPuckControlDismissDebug
+                                      [self.puckView.layer removeAllAnimations];
+                                      self.puckView.center = startPoint;
+                                      self.puckView.transform = CGAffineTransformIdentity;
+                                      self.puckView.alpha = 1.0f;
+#endif
+                                  }
                               }];
 }
 
