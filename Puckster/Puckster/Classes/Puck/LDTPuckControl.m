@@ -627,7 +627,7 @@
 
 - (void)dataSourceDelegateInvalid
 {
-    [NSException raise:@"LDTPuckControlDataSource" format:@"Delegate must be wired up!"];
+    [NSException raise:@"LDTPuckControlDataSource" format:@"Delegate must provide all required methods!"];
 }
 
 #pragma mark - LDTPuckViewDataSource
