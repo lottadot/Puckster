@@ -721,7 +721,7 @@
 /// Sent to the Delegate before we show the puck
 - (void)delegateWillPresentPuck
 {
-    if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)]) {
+    if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)] && [self.delegate respondsToSelector:@selector(willPresentPuckWithPuckControl:)]) {
         [self.delegate willPresentPuckWithPuckControl:self];
     }
 }
@@ -729,7 +729,7 @@
 /// Sent to the Delegate after we have presented the puck.
 - (void)delegateDidPresentPuck
 {
-    if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)]) {
+    if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)] && [self.delegate respondsToSelector:@selector(didPresentPuckWithPuckControl:)]) {
         [self.delegate didPresentPuckWithPuckControl:self];
     }
 }
@@ -737,7 +737,7 @@
 /// Sent to the Delegate before we dismiss the puck.
 - (void)delegateWillDismissPuck
 {
-    if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)]) {
+    if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)] && [self.delegate respondsToSelector:@selector(willDismissPuckWithPuckControl:)]) {
         [self.delegate willDismissPuckWithPuckControl:self];
     }
 }
@@ -745,7 +745,7 @@
 /// Sent to the delegate after we have dismissed the puck.
 - (void)delegateDidDismissPuck
 {
-    if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)]) {
+    if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)] && [self.delegate respondsToSelector:@selector(didDismissPuckWithPuckControl:)]) {
         [self.delegate didDismissPuckWithPuckControl:self];
     }
 }
