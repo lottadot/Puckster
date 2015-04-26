@@ -95,6 +95,14 @@
     return view;
 }
 
-#pragma mark - LDTPuckControlDelegate
+- (BOOL)shouldAnimatContentDisplayWithPuckControl:(LDTPuckControl *)puckControl
+{
+    return YES;
+}
+
+- (BOOL)shouldAnimatPuckDismissalPuckControl:(LDTPuckControl *)puckControl
+{
+    return YES;
+}
 
 @end

@@ -52,6 +52,9 @@ typedef enum : NSUInteger {
 /// Tell the puck control whether it should animate display of content.
 - (BOOL)shouldAnimatContentDisplayWithPuckControl:(LDTPuckControl *)puckControl;
 
+/// Tell the puck control whether it should animate the dismissal of the puck.
+- (BOOL)shouldAnimatPuckDismissalPuckControl:(LDTPuckControl *)puckControl;
+
 @end
 
 @interface LDTPuckControl : NSObject

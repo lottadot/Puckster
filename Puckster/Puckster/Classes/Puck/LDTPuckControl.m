@@ -266,12 +266,20 @@
         animated = [self.dataSource shouldAnimatContentDisplayWithPuckControl:self];
     }
     
-    [self presentContentAnimated:YES];
+    [self presentContentAnimated:animated];
 }
 
 - (IBAction)puckDoubleTapped:(id)sender
 {
-    [self dismissPuckAnimated:YES];
+    BOOL animated = YES;
+    
+    if (nil != self.dataSource
+        && [self.dataSource conformsToProtocol:@protocol(LDTPuckControlDataSource)]
+        && [self.dataSource respondsToSelector:@selector(shouldAnimatPuckDismissalPuckControl:)]) {
+        animated = [self.dataSource shouldAnimatPuckDismissalPuckControl:self];
+    }
+    
+    [self dismissPuckAnimated:animated];
 }
 
 - (IBAction)puckSwipedHorizontallyLeft:(id)sender
