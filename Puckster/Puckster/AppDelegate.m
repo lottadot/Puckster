@@ -78,7 +78,7 @@
     [label setTextColor:[UIColor whiteColor]];
     
     [view addSubview:label];
-    [view LDTCenterView:label toContainer:view];
+    [view ldt_centerView:label toContainer:view];
     
     
 //    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:label

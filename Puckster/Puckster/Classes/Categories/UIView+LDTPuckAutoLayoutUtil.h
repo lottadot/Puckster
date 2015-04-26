@@ -18,8 +18,8 @@
  
  @note sets `setTranslatesAutoresizingMaskIntoConstraints` NO to the view, sends `container layoutSubviews`.
  */
-- (void)LDTPinView:(UIView *)view toContainer:(UIView *)container;
+- (void)ldt_pinView:(UIView *)view toContainer:(UIView *)container;
 
-- (void)LDTCenterView:(UIView *)view toContainer:(UIView *)container;
+- (void)ldt_centerView:(UIView *)view toContainer:(UIView *)container;
 
 @end

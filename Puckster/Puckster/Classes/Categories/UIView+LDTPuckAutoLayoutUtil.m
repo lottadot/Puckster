@@ -10,7 +10,7 @@
 
 @implementation UIView (LDTPuckAutoLayoutUtil)
 
-- (void)LDTPinView:(UIView *)view toContainer:(UIView *)container
+- (void)ldt_pinView:(UIView *)view toContainer:(UIView *)container
 {
     NSParameterAssert(view);
     NSParameterAssert(container);
@@ -34,7 +34,7 @@
     }
 }
 
-- (void)LDTCenterView:(UIView *)view toContainer:(UIView *)container
+- (void)ldt_centerView:(UIView *)view toContainer:(UIView *)container
 {
     NSParameterAssert(view);
     NSParameterAssert(container);

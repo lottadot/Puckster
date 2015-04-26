@@ -41,7 +41,7 @@
 {
     // Add Content Container View
     [self addSubview:self.contentContainerView];
-    [self LDTPinView:self.contentContainerView toContainer:self];
+    [self ldt_pinView:self.contentContainerView toContainer:self];
 }
 
 #pragma mark - iVars
@@ -74,7 +74,7 @@
         _contentView = contentView;
 
         [self addSubview:_contentView];
-        [self LDTPinView:_contentView toContainer:self];
+        [self ldt_pinView:_contentView toContainer:self];
     }
 }
 

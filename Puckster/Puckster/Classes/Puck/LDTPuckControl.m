@@ -425,7 +425,7 @@
     
     [self.contentView setBackgroundColor:[UIColor clearColor]];
     [view addSubview:self.contentView];
-    [view LDTPinView:self.contentView toContainer:view];
+    [view ldt_pinView:self.contentView toContainer:view];
     [view layoutSubviews];
 
     // Add gestures to the content view so the user can easily dismiss it.
