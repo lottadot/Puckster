@@ -24,9 +24,11 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
+    
     if (self) {
         [self addContentContainerView];
     }
+    
     return self;
 }
 
@@ -50,6 +52,7 @@
         _contentContainerView = [[UIView alloc] initWithFrame:CGRectZero];
         [_contentContainerView setTranslatesAutoresizingMaskIntoConstraints:NO];
     }
+
     return _contentContainerView;
 }
 
@@ -68,7 +71,6 @@
             return;
         }
     } else {
-        
         if (_contentView == contentView) {
             return;
         }

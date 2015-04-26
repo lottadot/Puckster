@@ -58,6 +58,7 @@
     }
     
     self = [super init];
+    
     if (self) {
         
         _delegate = delegate;
@@ -67,7 +68,7 @@
         _puckBorderColor = puckBorderColor;
         
         _puckLocation = location;
-        CGPoint center = CGPointMake(CGRectGetMaxY(window.frame),CGRectGetMaxY(window.frame));
+        CGPoint center = CGPointMake(CGRectGetMaxY(window.frame), CGRectGetMaxY(window.frame));
         
         _puckView = [[LDTPuckView alloc] initWithPoint:center withDataSource:self];
         NSAssert(nil != _puckView, nil);
@@ -87,6 +88,7 @@
         
         [window bringSubviewToFront:_puckView];
     }
+    
     return self;
 }
 
@@ -98,6 +100,7 @@
         
         _puckView = [LDTPuckView new];
     }
+    
     return _puckView;
 }
 
@@ -108,6 +111,7 @@
         _contentView = [[LDTPuckContentView alloc] initWithFrame:CGRectZero];
         [_contentView setTranslatesAutoresizingMaskIntoConstraints:NO];
     }
+    
     return _contentView;
 }
 
@@ -120,6 +124,7 @@
         [_singleTapGestureRecognizer setNumberOfTapsRequired:1];
         [_singleTapGestureRecognizer requireGestureRecognizerToFail:[self doubleTapGestureRecognizer]];
     }
+    
     return _singleTapGestureRecognizer;
 }
 
@@ -131,6 +136,7 @@
                                  action:@selector(puckDoubleTapped:)];
         [_doubleTapGestureRecognizer setNumberOfTapsRequired:2];
     }
+    
     return _doubleTapGestureRecognizer;
 }
 
@@ -143,6 +149,7 @@
         [_leftHorizontalSwipeGestureRecognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
         
     }
+    
     return _leftHorizontalSwipeGestureRecognizer;
 }
 
@@ -155,6 +162,7 @@
         [_rightHorizontalSwipeGestureRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
         
     }
+    
     return _rightHorizontalSwipeGestureRecognizer;
 }
 
@@ -167,6 +175,7 @@
         [_upVerticalSwipeGestureRecognizer setDirection:( UISwipeGestureRecognizerDirectionUp)];
         
     }
+    
     return _upVerticalSwipeGestureRecognizer;
 }
 
@@ -179,6 +188,7 @@
         [_downVerticalSwipeGestureRecognizer setDirection:(UISwipeGestureRecognizerDirectionDown)];
         
     }
+    
     return _downVerticalSwipeGestureRecognizer;
 }
 
@@ -199,7 +209,9 @@
             CGFloat statusHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
             CGPoint point = CGPointMake(CGRectGetMinX(windowFrame) + XOffset,
                                         CGRectGetMinY(windowFrame) + YOffset + statusHeight);
+            
             return point;
+            
             break;
         }
         case LDTPuckViewLocationTopRight:
@@ -207,14 +219,18 @@
             CGFloat statusHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
             CGPoint point = CGPointMake(CGRectGetMaxX(windowFrame) - XOffset,
                                         CGRectGetMinY(windowFrame) + YOffset + statusHeight);
+            
             return point;
+            
             break;
         }
         case LDTPuckViewLocationBottomLeft:
         {
             CGPoint point = CGPointMake(CGRectGetMinX(windowFrame) + XOffset,
                                         CGRectGetMaxY(windowFrame) - YOffset);
+            
             return point;
+            
             break;
         }
         default:
@@ -222,7 +238,9 @@
             // LDTPuckViewLocationBottomRight
             CGPoint point = CGPointMake(CGRectGetMaxX(windowFrame) - XOffset,
                                               CGRectGetMaxY(windowFrame) - YOffset);
+            
             return point;
+            
             break;
         }
     }
@@ -292,6 +310,7 @@
         {
             _puckLocation = LDTPuckViewLocationTopLeft;
             [self movePuckToCurrentLocation];
+            
             break;
         }
             
@@ -299,6 +318,7 @@
         {
             _puckLocation = LDTPuckViewLocationBottomLeft;
             [self movePuckToCurrentLocation];
+            
             break;
         }
     }
@@ -311,6 +331,7 @@
         {
             _puckLocation = LDTPuckViewLocationTopRight;
             [self movePuckToCurrentLocation];
+            
             break;
         }
             
@@ -318,11 +339,11 @@
         {
             _puckLocation = LDTPuckViewLocationBottomRight;
             [self movePuckToCurrentLocation];
+            
             break;
         }
     }
 }
-
 
 - (IBAction)puckSwipedVerticallyUp:(id)sender
 {
@@ -331,6 +352,7 @@
         {
             _puckLocation = LDTPuckViewLocationTopLeft;
             [self movePuckToCurrentLocation];
+            
             break;
         }
             
@@ -338,6 +360,7 @@
         {
             _puckLocation = LDTPuckViewLocationTopRight;
             [self movePuckToCurrentLocation];
+            
             break;
         }
     }
@@ -350,6 +373,7 @@
         {
             _puckLocation = LDTPuckViewLocationBottomLeft;
             [self movePuckToCurrentLocation];
+            
             break;
         }
             
@@ -357,6 +381,7 @@
         {
             _puckLocation = LDTPuckViewLocationBottomRight;
             [self movePuckToCurrentLocation];
+            
             break;
         }
     }
@@ -521,6 +546,7 @@
             xAnimationInset = 80.0f;
             yAnimationInset1 = 25.0f;
             yAnimationInset2 = 50.0f;
+            
             break;
         }
         case LDTPuckViewLocationTopRight:
@@ -530,6 +556,7 @@
             xAnimationInset = 80.0f;
             yAnimationInset1 = 25.0f;
             yAnimationInset2 = 50.0f;
+            
             break;
         }
         case LDTPuckViewLocationBottomLeft:
@@ -539,6 +566,7 @@
             xAnimationInset = 80.0f;
             yAnimationInset1 = -25.0f;
             yAnimationInset2 = -50.0f;
+            
             break;
         }
         default:
@@ -548,6 +576,7 @@
             xAnimationInset = -80.0f;
             yAnimationInset1 = -25.0f;
             yAnimationInset2 = -50.0f;
+            
             break;
         }
     }

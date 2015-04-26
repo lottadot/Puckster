@@ -39,6 +39,8 @@
                               point.y - LDTPuckViewDefaultHeight,
                               LDTPuckViewDefaultWidth,
                               LDTPuckViewDefaultHeight);
+    
+    
     return [self initWithFrame:frame withDelegate:delegate];
 }
 
@@ -46,11 +48,13 @@
 {
     NSParameterAssert(delegate);
     self = [super initWithFrame:frame];
+    
     if (self) {
         //[self setBackgroundColor:[UIColor redColor]];
         _dataSource = delegate;
         [self setup];
     }
+    
     return self;
 }
 
