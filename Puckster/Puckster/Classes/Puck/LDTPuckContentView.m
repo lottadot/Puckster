@@ -29,6 +29,7 @@
     
     if (self) {
         [self addContentContainerView];
+        self.accessibilityLabel = NSLocalizedString(@"PuckContent", nil);
     }
     
     return self;

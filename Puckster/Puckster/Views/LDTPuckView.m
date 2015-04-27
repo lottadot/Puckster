@@ -111,6 +111,8 @@ static const CGFloat LDTPuckViewDeselectedRadius = 22.0f; // Go with Radius or w
     fillLayer.position = center;
     [self.layer addSublayer:fillLayer];
     self.fillLayer = fillLayer;
+    
+    self.accessibilityLabel = NSLocalizedString(@"Puck", nil);
 }
 
 - (CGSize)intrinsicContentSize
