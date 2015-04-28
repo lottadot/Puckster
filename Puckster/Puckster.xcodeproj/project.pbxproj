@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3406BEC11AEF18F60029B3F5 /* PucksterLibrary.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3406BEC01AEF18F60029B3F5 /* PucksterLibrary.h */; };
+		3406BEC91AEF18F60029B3F5 /* libPucksterLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3406BEBE1AEF18F60029B3F5 /* libPucksterLibrary.a */; };
+		3406BED61AEF19460029B3F5 /* PucksterLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 3406BEC01AEF18F60029B3F5 /* PucksterLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3406BED71AEF194C0029B3F5 /* LDTPuckControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 344566301AE489E100EFB52E /* LDTPuckControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3406BED81AEF194E0029B3F5 /* LDTPuckControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 344566311AE489E100EFB52E /* LDTPuckControl.m */; };
+		3406BED91AEF19540029B3F5 /* LDTPuckView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3445662C1AE4890800EFB52E /* LDTPuckView.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3406BEDA1AEF19560029B3F5 /* LDTPuckView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3445662D1AE4890800EFB52E /* LDTPuckView.m */; };
+		3406BEDB1AEF19590029B3F5 /* LDTPuckViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 3445662F1AE4897400EFB52E /* LDTPuckViewDataSource.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3406BEDC1AEF195C0029B3F5 /* LDTPuckContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D3947B1AEC27530036D557 /* LDTPuckContentView.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3406BEDD1AEF195E0029B3F5 /* LDTPuckContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D3947C1AEC27530036D557 /* LDTPuckContentView.m */; };
+		3406BEDE1AEF19640029B3F5 /* UIView+LDTPuckAutoLayoutUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D3947E1AEC2C910036D557 /* UIView+LDTPuckAutoLayoutUtil.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3406BEDF1AEF19680029B3F5 /* UIView+LDTPuckAutoLayoutUtil.m in Headers */ = {isa = PBXBuildFile; fileRef = 34D3947F1AEC2C910036D557 /* UIView+LDTPuckAutoLayoutUtil.m */; settings = {ATTRIBUTES = (Private, ); }; };
+		3406BEE31AEF1B210029B3F5 /* UIView+LDTPuckAutoLayoutUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D3947F1AEC2C910036D557 /* UIView+LDTPuckAutoLayoutUtil.m */; };
 		344566081AE4883500EFB52E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 344566071AE4883500EFB52E /* main.m */; };
 		3445660B1AE4883500EFB52E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3445660A1AE4883500EFB52E /* AppDelegate.m */; };
 		3445660E1AE4883500EFB52E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3445660D1AE4883500EFB52E /* ViewController.m */; };
@@ -30,6 +43,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3406BECA1AEF18F60029B3F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 344565FA1AE4883500EFB52E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3406BEBD1AEF18F60029B3F5;
+			remoteInfo = PucksterLibrary;
+		};
 		3445661C1AE4883500EFB52E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 344565FA1AE4883500EFB52E /* Project object */;
@@ -61,6 +81,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		3406BEBC1AEF18F60029B3F5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				3406BEC11AEF18F60029B3F5 /* PucksterLibrary.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		34D394AD1AEC77180036D557 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -75,6 +105,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3406BEBE1AEF18F60029B3F5 /* libPucksterLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPucksterLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3406BEC01AEF18F60029B3F5 /* PucksterLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PucksterLibrary.h; sourceTree = "<group>"; };
+		3406BEC81AEF18F60029B3F5 /* PucksterLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PucksterLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3406BECE1AEF18F60029B3F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		344566021AE4883500EFB52E /* Puckster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Puckster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		344566061AE4883500EFB52E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		344566071AE4883500EFB52E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -106,6 +140,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3406BEBB1AEF18F60029B3F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3406BEC51AEF18F60029B3F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3406BEC91AEF18F60029B3F5 /* libPucksterLibrary.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		344565FF1AE4883500EFB52E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -138,6 +187,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3406BEBF1AEF18F60029B3F5 /* PucksterLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				3406BEC01AEF18F60029B3F5 /* PucksterLibrary.h */,
+			);
+			path = PucksterLibrary;
+			sourceTree = "<group>";
+		};
+		3406BECC1AEF18F60029B3F5 /* PucksterLibraryTests */ = {
+			isa = PBXGroup;
+			children = (
+				3406BECD1AEF18F60029B3F5 /* Supporting Files */,
+			);
+			path = PucksterLibraryTests;
+			sourceTree = "<group>";
+		};
+		3406BECD1AEF18F60029B3F5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3406BECE1AEF18F60029B3F5 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		344565F91AE4883500EFB52E = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +218,8 @@
 				3445661E1AE4883500EFB52E /* PucksterTests */,
 				34D394921AEC77170036D557 /* PucksterFramework */,
 				34D394A11AEC77180036D557 /* PucksterFrameworkTests */,
+				3406BEBF1AEF18F60029B3F5 /* PucksterLibrary */,
+				3406BECC1AEF18F60029B3F5 /* PucksterLibraryTests */,
 				344566031AE4883500EFB52E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -156,6 +231,8 @@
 				3445661B1AE4883500EFB52E /* PucksterTests.xctest */,
 				34D394911AEC77170036D557 /* PucksterFramework.framework */,
 				34D3949B1AEC77170036D557 /* PucksterFrameworkTests.xctest */,
+				3406BEBE1AEF18F60029B3F5 /* libPucksterLibrary.a */,
+				3406BEC81AEF18F60029B3F5 /* PucksterLibraryTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -271,6 +348,20 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		3406BED51AEF19400029B3F5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3406BED61AEF19460029B3F5 /* PucksterLibrary.h in Headers */,
+				3406BED71AEF194C0029B3F5 /* LDTPuckControl.h in Headers */,
+				3406BED91AEF19540029B3F5 /* LDTPuckView.h in Headers */,
+				3406BEDE1AEF19640029B3F5 /* UIView+LDTPuckAutoLayoutUtil.h in Headers */,
+				3406BEDF1AEF19680029B3F5 /* UIView+LDTPuckAutoLayoutUtil.m in Headers */,
+				3406BEDB1AEF19590029B3F5 /* LDTPuckViewDataSource.h in Headers */,
+				3406BEDC1AEF195C0029B3F5 /* LDTPuckContentView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		34D3948E1AEC77170036D557 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -287,6 +378,43 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		3406BEBD1AEF18F60029B3F5 /* PucksterLibrary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3406BED31AEF18F60029B3F5 /* Build configuration list for PBXNativeTarget "PucksterLibrary" */;
+			buildPhases = (
+				3406BEBA1AEF18F60029B3F5 /* Sources */,
+				3406BEBB1AEF18F60029B3F5 /* Frameworks */,
+				3406BEBC1AEF18F60029B3F5 /* CopyFiles */,
+				3406BED51AEF19400029B3F5 /* Headers */,
+				3406BEE21AEF1A890029B3F5 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PucksterLibrary;
+			productName = PucksterLibrary;
+			productReference = 3406BEBE1AEF18F60029B3F5 /* libPucksterLibrary.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		3406BEC71AEF18F60029B3F5 /* PucksterLibraryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3406BED41AEF18F60029B3F5 /* Build configuration list for PBXNativeTarget "PucksterLibraryTests" */;
+			buildPhases = (
+				3406BEC41AEF18F60029B3F5 /* Sources */,
+				3406BEC51AEF18F60029B3F5 /* Frameworks */,
+				3406BEC61AEF18F60029B3F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3406BECB1AEF18F60029B3F5 /* PBXTargetDependency */,
+			);
+			name = PucksterLibraryTests;
+			productName = PucksterLibraryTests;
+			productReference = 3406BEC81AEF18F60029B3F5 /* PucksterLibraryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		344566011AE4883500EFB52E /* Puckster */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 344566251AE4883500EFB52E /* Build configuration list for PBXNativeTarget "Puckster" */;
@@ -370,6 +498,12 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Lottadot LLC";
 				TargetAttributes = {
+					3406BEBD1AEF18F60029B3F5 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					3406BEC71AEF18F60029B3F5 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
 					344566011AE4883500EFB52E = {
 						CreatedOnToolsVersion = 6.3;
 					};
@@ -403,11 +537,20 @@
 				3445661A1AE4883500EFB52E /* PucksterTests */,
 				34D394901AEC77170036D557 /* PucksterFramework */,
 				34D3949A1AEC77170036D557 /* PucksterFrameworkTests */,
+				3406BEBD1AEF18F60029B3F5 /* PucksterLibrary */,
+				3406BEC71AEF18F60029B3F5 /* PucksterLibraryTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3406BEC61AEF18F60029B3F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		344566001AE4883500EFB52E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -441,7 +584,41 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3406BEE21AEF1A890029B3F5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		3406BEBA1AEF18F60029B3F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3406BED81AEF194E0029B3F5 /* LDTPuckControl.m in Sources */,
+				3406BEDA1AEF19560029B3F5 /* LDTPuckView.m in Sources */,
+				3406BEDD1AEF195E0029B3F5 /* LDTPuckContentView.m in Sources */,
+				3406BEE31AEF1B210029B3F5 /* UIView+LDTPuckAutoLayoutUtil.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3406BEC41AEF18F60029B3F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		344565FE1AE4883500EFB52E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -482,6 +659,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3406BECB1AEF18F60029B3F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3406BEBD1AEF18F60029B3F5 /* PucksterLibrary */;
+			targetProxy = 3406BECA1AEF18F60029B3F5 /* PBXContainerItemProxy */;
+		};
 		3445661D1AE4883500EFB52E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 344566011AE4883500EFB52E /* Puckster */;
@@ -524,6 +706,69 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3406BECF1AEF18F60029B3F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEAD_CODE_STRIPPING = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRIVATE_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)PrivateHeaders";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+			};
+			name = Debug;
+		};
+		3406BED01AEF18F60029B3F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEAD_CODE_STRIPPING = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRIVATE_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)PrivateHeaders";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+			};
+			name = Release;
+		};
+		3406BED11AEF18F60029B3F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PucksterLibraryTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3406BED21AEF18F60029B3F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PucksterLibraryTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		344566231AE4883500EFB52E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -737,6 +982,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3406BED31AEF18F60029B3F5 /* Build configuration list for PBXNativeTarget "PucksterLibrary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3406BECF1AEF18F60029B3F5 /* Debug */,
+				3406BED01AEF18F60029B3F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3406BED41AEF18F60029B3F5 /* Build configuration list for PBXNativeTarget "PucksterLibraryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3406BED11AEF18F60029B3F5 /* Debug */,
+				3406BED21AEF18F60029B3F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		344565FD1AE4883500EFB52E /* Build configuration list for PBXProject "Puckster" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -771,6 +1032,7 @@
 				34D394AC1AEC77180036D557 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		34D394AE1AEC77180036D557 /* Build configuration list for PBXNativeTarget "PucksterFrameworkTests" */ = {
 			isa = XCConfigurationList;
@@ -779,6 +1041,7 @@
 				34D394B01AEC77180036D557 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
