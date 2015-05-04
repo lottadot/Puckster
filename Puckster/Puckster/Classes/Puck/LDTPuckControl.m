@@ -15,7 +15,7 @@
 #define LDTPuckControlWidth 50.0f
 #define LDTPuckControlHeight 50.0f
 
-//#define LDTPuckControlDismissDebug 1
+#define LDTPuckControlDismissDebug 1
 
 @interface LDTPuckControl () <LDTPuckViewDataSource>
 
@@ -742,7 +742,9 @@
                                       self.puckView.center = startPoint;
                                       self.puckView.transform = CGAffineTransformIdentity;
                                       self.puckView.alpha = 1.0f;
+                                      self.puckView.hidden = YES;
 #endif
+                                      [self.puckView removeFromSuperview];
                                       [self delegateDidDismissPuck];
                                       
                                   }
