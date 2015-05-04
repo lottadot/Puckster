@@ -84,6 +84,11 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [_puckView removeFromSuperview];
+}
+
 #pragma mark - iVar's
 
 - (LDTPuckView *)puckView
