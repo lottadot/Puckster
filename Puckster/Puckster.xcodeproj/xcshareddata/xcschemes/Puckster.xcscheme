@@ -48,6 +48,20 @@
                ReferencedContainer = "container:Puckster.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "34CB9EC61AF6F9FF00BAD174"
+               BuildableName = "Puckster Acceptance Tests.xctest"
+               BlueprintName = "Puckster Acceptance Tests"
+               ReferencedContainer = "container:Puckster.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -73,6 +87,16 @@
                BlueprintIdentifier = "34D3949A1AEC77170036D557"
                BuildableName = "PucksterFrameworkTests.xctest"
                BlueprintName = "PucksterFrameworkTests"
+               ReferencedContainer = "container:Puckster.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "34CB9EC61AF6F9FF00BAD174"
+               BuildableName = "Puckster Acceptance Tests.xctest"
+               BlueprintName = "Puckster Acceptance Tests"
                ReferencedContainer = "container:Puckster.xcodeproj">
             </BuildableReference>
          </TestableReference>
