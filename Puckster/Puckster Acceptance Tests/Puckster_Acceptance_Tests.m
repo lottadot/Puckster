@@ -26,8 +26,82 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    [tester waitForViewWithAccessibilityLabel:@"ExampleLabel"];
+- (void)test001VerifyInitialSetup
+{
+    [tester waitForViewWithAccessibilityLabel:@"Puckster View Controller"];
+    [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Puck"];
+}
+
+- (void)test002VerifyPuckIsShown
+{
+    [tester waitForTimeInterval:5.0f];
+    [tester waitForViewWithAccessibilityLabel:@"Puck"];
+}
+
+- (void)test002VerifyPuckCanBeSwipedLeft
+{
+    // Default is to place the puck in the bottom right corner. Thefore, the user should be able to swipe it to the left.
+    [tester swipeViewWithAccessibilityLabel:@"Puck" inDirection:KIFSwipeDirectionLeft];
+    [tester waitForTimeInterval:1.0f];
+}
+
+- (void)test003VerifyPuckCanBeSwipedUp
+{
+    // Default is to place the puck in the bottom right corner. Thefore, the user should be able to swipe it up. We have already moved the puck to the left.
+    [tester swipeViewWithAccessibilityLabel:@"Puck" inDirection:KIFSwipeDirectionUp];
+    [tester waitForTimeInterval:1.0f];
+}
+
+- (void)test004VerifyPuckCanBeSwipedRight
+{
+    [tester swipeViewWithAccessibilityLabel:@"Puck" inDirection:KIFSwipeDirectionRight];
+    [tester waitForTimeInterval:1.0f];
+}
+
+- (void)test005VerifyPuckCanBeSwipedDown
+{
+    [tester swipeViewWithAccessibilityLabel:@"Puck" inDirection:KIFSwipeDirectionDown];
+    [tester waitForTimeInterval:1.0f];
+    // Now the puck is back at it's original spot
+}
+
+- (void)test006VerifyPuckIsTappable
+{
+    [tester waitForTappableViewWithAccessibilityLabel:@"Puck"];
+}
+
+- (void)test007VerifyPuckTap
+{
+    [tester tapViewWithAccessibilityLabel:@"Puck"];
+    [tester waitForViewWithAccessibilityLabel:@"Content View For Puck Control"];
+}
+
+- (void)test008VerifyInformationViewRemoves
+{
+    [tester tapViewWithAccessibilityLabel:@"Content View For Puck Control"];
+    [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Content View For Puck Control"];
+    [tester waitForViewWithAccessibilityLabel:@"Puck"];
+}
+
+- (void)test009VerifyPuckRemoves
+{
+    // Simulate a double-tap
+    // stepToTapViewWithAccessibilityLabel
+    
+    UIWindow *window = [UIApplication.sharedApplication.windows firstObject];
+    UIView *view = [window viewForBaselineLayout];
+    CGRect frame = view.bounds;
+    CGPoint point = CGPointMake(CGRectGetMaxX(frame) - 25.0f,
+                                CGRectGetMaxY(frame) - 25.0f);
+    //[tester tapViewWithAccessibilityLabel:@"Puck"];
+    [tester tapScreenAtPoint:point];
+    [tester waitForTimeInterval:0.1];
+    //[tester tapViewWithAccessibilityLabel:@"Puck"];
+    [tester tapScreenAtPoint:point];
+    [tester waitForTimeInterval:2.0];
+    
+    [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Puck"];
+    [tester waitForViewWithAccessibilityLabel:@"Puckster View Controller"];
 }
 
 @end
