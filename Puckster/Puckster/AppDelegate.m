@@ -139,6 +139,7 @@
 
 - (void)didDismissPuckWithPuckControl:(LDTPuckControl *)puckControl
 {
+    NSLog(@"didDismiss");
     [self performSelector:@selector(killThePuck) withObject:nil afterDelay:.05f];
 }
 
