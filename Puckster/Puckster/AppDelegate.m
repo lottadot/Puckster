@@ -72,6 +72,7 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
     [view setTranslatesAutoresizingMaskIntoConstraints:NO];
     [view setBackgroundColor:[UIColor blueColor]];
+    [view setAccessibilityLabel:@"Content View For Puck Control"];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
     [label setTranslatesAutoresizingMaskIntoConstraints:NO];
