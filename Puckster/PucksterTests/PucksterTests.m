@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "LDTPuckControl.h"
+#import "LDTPuckView.h"
+#import "LDTPuckViewDataSource.h"
+#import "LDTPuckContentView.h"
+#import "ViewController.h"
 
 @interface PucksterTests : XCTestCase
+
+@property (nonatomic, strong) ViewController *viewController;
+@property (nonatomic, strong) LDTPuckControl *puckControl;
 
 @end
 
@@ -18,7 +26,22 @@
 - (void)setUp
 {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+// TODO
+//    _viewController = [ViewController new];
+//    UIWindow *window = _viewController.view.window;
+//    
+//    [_viewController beginAppearanceTransition:YES animated:YES];
+//    [_viewController loadView];
+//    [_viewController endAppearanceTransition];
+//    
+//    _puckControl = [[LDTPuckControl alloc]
+//                    initInWindow:window
+//                    withLocation:LDTPuckViewLocationBottomRight
+//                    withDelegate:_viewController
+//                    dataSource:_viewController
+//                    puckColor:[UIColor greenColor]
+//                    puckBorderColor:[UIColor blackColor]
+//                    animated:YES];
 }
 
 - (void)tearDown
@@ -27,18 +50,11 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)test001ElementsExist
 {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
-}
-
-- (void)testPerformanceExample
-{
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+// TODO
+//    XCTAssertNotNil(_viewController);
+//    XCTAssertNotNil(_puckControl);
 }
 
 @end
