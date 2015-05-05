@@ -1,4 +1,5 @@
 github "lottadot/ocmock" "carthage"
+#github "file:///Users/shane/code/ocmock"
 github "kif-framework/KIF" "master"
 
 
