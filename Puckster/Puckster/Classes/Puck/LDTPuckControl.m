@@ -8,7 +8,6 @@
 
 #import "LDTPuckControl.h"
 #import "LDTPuckView.h"
-#import "LDTPuckViewDataSource.h"
 #import "LDTPuckContentView.h"
 #import "UIView+LDTPuckAutoLayoutUtil.h"
 
@@ -17,7 +16,7 @@
 
 #define LDTPuckControlDismissDebug 1
 
-@interface LDTPuckControl () <LDTPuckViewDataSource>
+@interface LDTPuckControl ()
 
 /// The `LDTPuckView` the use will pan around and tap.
 @property (nonatomic, strong) LDTPuckView *puckView;
@@ -40,6 +39,8 @@
 
 @property (nonatomic, strong) UIColor *puckColor;
 @property (nonatomic, strong) UIColor *puckBorderColor;
+
+@property (nonatomic, strong) UIWindow *window;
 
 @end
 
@@ -74,11 +75,11 @@
         
         _puckLocation = location;
         
-        CGPoint center = CGPointMake(CGRectGetMaxY(window.frame), CGRectGetMaxY(window.frame));
-        _puckView = [[LDTPuckView alloc] initWithPoint:center withDataSource:self];
-        NSAssert(nil != _puckView, nil);
+        _window = window;
         
-        [self presentPuckInWindow:window animated:animated];
+        CGPoint center = CGPointMake(CGRectGetMaxY(window.frame), CGRectGetMaxY(window.frame));
+        _puckView = [[LDTPuckView alloc] initWithPoint:center withBodyColor:_puckColor withBorderColor:_puckBorderColor];
+        NSAssert(nil != _puckView, nil);
     }
     
     return self;
@@ -191,14 +192,9 @@
 
 #pragma mark - Puck Presentation
 
-/**
- Present the puck in the window to the user. If animated, the puck will enlarge and somewhat flex better settling down.
- */
-- (void)presentPuckInWindow:(UIWindow *)window animated:(BOOL)animated
+- (void)presentPuckAnimated:(BOOL)animated
 {
-    NSParameterAssert(window);
-    
-    if (nil == window) {
+    if (nil == _window) {
         return;
     }
     if (nil != self.puckView.superview) {
@@ -207,7 +203,7 @@
 
     [self delegateWillPresentPuck];
     
-    [window addSubview:[self puckView]];
+    [_window addSubview:[self puckView]];
     [_puckView setAutoresizingMask:UIViewAutoresizingNone];
     self.puckView.layer.opacity = 0.0f;
     
@@ -220,7 +216,7 @@
     [_puckView addGestureRecognizer:[self singleTapGestureRecognizer]];
     [_puckView addGestureRecognizer:[self doubleTapGestureRecognizer]];
     
-    [window bringSubviewToFront:_puckView];
+    [_window bringSubviewToFront:_puckView];
 
     void (^animations)() = ^{
 

@@ -8,15 +8,11 @@
 
 @import UIKit;
 
-@protocol LDTPuckViewDataSource;
-
 /**
  The view that will represent a 'puck'. It will use it's delegate to relay information.
  */
 @interface LDTPuckView : UIView
 
-@property (nonatomic, readonly) id<LDTPuckViewDataSource> dataSource;
-
-- (instancetype)initWithPoint:(CGPoint)point withDataSource:(id<LDTPuckViewDataSource>)delegate;
+- (instancetype)initWithPoint:(CGPoint)point withBodyColor:(UIColor *)bodyColor withBorderColor:(UIColor *)borderColor;
 
 @end

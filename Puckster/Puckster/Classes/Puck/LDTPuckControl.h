@@ -88,6 +88,11 @@ typedef enum : NSUInteger {
                     animated:(BOOL)animated;
 
 /**
+ Present the puck in the window to the user. If animated, the puck will enlarge and somewhat flex better settling down.
+ */
+- (void)presentPuckAnimated:(BOOL)animated;
+
+/**
  Dismiss the puck from the screen.
  @param animated `BOOL` whether to animate the removal or not.
  */

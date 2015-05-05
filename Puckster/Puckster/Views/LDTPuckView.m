@@ -7,7 +7,6 @@
 //
 
 #import "LDTPuckView.h"
-#import "LDTPuckViewDataSource.h"
 
 static const CGFloat LDTPuckViewDefaultWidth  = 50.0;
 static const CGFloat LDTPuckViewDefaultHeight = 50.0;
@@ -33,7 +32,8 @@ static const CGFloat LDTPuckViewDeselectedRadius = 22.0f; // Go with Radius or w
 
 #pragma mark Lifecycle
 
-- (instancetype)initWithPoint:(CGPoint)point withDataSource:(id<LDTPuckViewDataSource>)delegate
+- (instancetype)initWithPoint:(CGPoint)point withBodyColor:(UIColor *)bodyColor
+              withBorderColor:(UIColor *)borderColor
 {
     CGRect frame = CGRectMake(point.x - LDTPuckViewDefaultWidth,
                               point.y - LDTPuckViewDefaultHeight,
@@ -41,18 +41,18 @@ static const CGFloat LDTPuckViewDeselectedRadius = 22.0f; // Go with Radius or w
                               LDTPuckViewDefaultHeight);
     
     
-    return [self initWithFrame:frame withDelegate:delegate];
+    return [self initWithFrame:frame withBodyColor:bodyColor withBorderColor:borderColor];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame withDelegate:(id<LDTPuckViewDataSource>)delegate
+
+- (instancetype)initWithFrame:(CGRect)frame withBodyColor:(UIColor *)bodyColor
+              withBorderColor:(UIColor *)borderColor
 {
-    NSParameterAssert(delegate);
     self = [super initWithFrame:frame];
     
     if (self) {
         //[self setBackgroundColor:[UIColor redColor]];
-        _dataSource = delegate;
-        [self setup];
+        [self setupWithBodyColor:bodyColor borderColor:borderColor];
     }
     
     return self;
@@ -61,7 +61,7 @@ static const CGFloat LDTPuckViewDeselectedRadius = 22.0f; // Go with Radius or w
 #pragma mark Drawing Setup
 
 // Setup the layers that will make up the stroke and fill.
-- (void)setup
+- (void)setupWithBodyColor:(UIColor *)bodyColor borderColor:(UIColor *)borderColor
 {
     CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     
@@ -72,15 +72,7 @@ static const CGFloat LDTPuckViewDeselectedRadius = 22.0f; // Go with Radius or w
                                                            clockwise:YES];
     strokeLayer.path = [strokePath CGPath];
     
-    UIColor *strokeFillColor = LDTPuckViewDeselectedStrokeColor;
-    
-    if (nil != self.dataSource) {
-        if ([self.dataSource conformsToProtocol:@protocol(LDTPuckViewDataSource)]) {
-            if ([self.dataSource respondsToSelector:@selector(puckBorderColor)]) {
-                strokeFillColor = [self.dataSource puckBorderColor];
-            }
-        }
-    }
+    UIColor *strokeFillColor = (nil != borderColor) ? borderColor : LDTPuckViewDeselectedStrokeColor;
     
     strokeLayer.fillColor = [strokeFillColor CGColor];
     strokeLayer.bounds = self.bounds;
@@ -96,16 +88,8 @@ static const CGFloat LDTPuckViewDeselectedRadius = 22.0f; // Go with Radius or w
                                                          clockwise:YES];
     fillLayer.path = [fillPath CGPath];
     
-    UIColor *fillColor = [UIColor colorWithRed:0.97 green:0.45 blue:0.07 alpha:1.0];
-    
-    if (nil != self.dataSource) {
-        if ([self.dataSource conformsToProtocol:@protocol(LDTPuckViewDataSource)]) {
-            if ([self.dataSource respondsToSelector:@selector(puckColor)]) {
-                fillColor = [self.dataSource puckColor];
-            }
-        }
-    }
-    
+    UIColor *fillColor = (nil != bodyColor) ? bodyColor : [UIColor colorWithRed:0.97 green:0.45 blue:0.07 alpha:1.0];
+
     fillLayer.fillColor = [fillColor CGColor];
     fillLayer.bounds = self.bounds;
     fillLayer.position = center;

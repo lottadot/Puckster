@@ -14,7 +14,6 @@
 		3406BED81AEF194E0029B3F5 /* LDTPuckControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 344566311AE489E100EFB52E /* LDTPuckControl.m */; };
 		3406BED91AEF19540029B3F5 /* LDTPuckView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3445662C1AE4890800EFB52E /* LDTPuckView.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3406BEDA1AEF19560029B3F5 /* LDTPuckView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3445662D1AE4890800EFB52E /* LDTPuckView.m */; };
-		3406BEDB1AEF19590029B3F5 /* LDTPuckViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 3445662F1AE4897400EFB52E /* LDTPuckViewDataSource.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3406BEDC1AEF195C0029B3F5 /* LDTPuckContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D3947B1AEC27530036D557 /* LDTPuckContentView.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3406BEDD1AEF195E0029B3F5 /* LDTPuckContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D3947C1AEC27530036D557 /* LDTPuckContentView.m */; };
 		3406BEDE1AEF19640029B3F5 /* UIView+LDTPuckAutoLayoutUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D3947E1AEC2C910036D557 /* UIView+LDTPuckAutoLayoutUtil.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -37,7 +36,6 @@
 		34D394B21AEC77500036D557 /* LDTPuckControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 344566301AE489E100EFB52E /* LDTPuckControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34D394B31AEC77550036D557 /* LDTPuckView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3445662C1AE4890800EFB52E /* LDTPuckView.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		34D394B41AEC775C0036D557 /* LDTPuckView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3445662D1AE4890800EFB52E /* LDTPuckView.m */; };
-		34D394B51AEC77600036D557 /* LDTPuckViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 3445662F1AE4897400EFB52E /* LDTPuckViewDataSource.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		34D394B61AEC77660036D557 /* LDTPuckContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D3947B1AEC27530036D557 /* LDTPuckContentView.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		34D394B71AEC776A0036D557 /* LDTPuckContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D3947C1AEC27530036D557 /* LDTPuckContentView.m */; };
 		34D394B81AEC77700036D557 /* UIView+LDTPuckAutoLayoutUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D3947E1AEC2C910036D557 /* UIView+LDTPuckAutoLayoutUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -133,7 +131,6 @@
 		344566211AE4883500EFB52E /* PucksterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PucksterTests.m; sourceTree = "<group>"; };
 		3445662C1AE4890800EFB52E /* LDTPuckView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LDTPuckView.h; path = Views/LDTPuckView.h; sourceTree = "<group>"; };
 		3445662D1AE4890800EFB52E /* LDTPuckView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LDTPuckView.m; path = Views/LDTPuckView.m; sourceTree = "<group>"; };
-		3445662F1AE4897400EFB52E /* LDTPuckViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LDTPuckViewDataSource.h; path = Classes/Puck/LDTPuckViewDataSource.h; sourceTree = "<group>"; };
 		344566301AE489E100EFB52E /* LDTPuckControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LDTPuckControl.h; path = Classes/Puck/LDTPuckControl.h; sourceTree = "<group>"; };
 		344566311AE489E100EFB52E /* LDTPuckControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LDTPuckControl.m; path = Classes/Puck/LDTPuckControl.m; sourceTree = "<group>"; };
 		34A7F3501AF85D44007910B4 /* OCMockFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMockFramework.framework; path = ../Carthage/Build/iOS/OCMockFramework.framework; sourceTree = "<group>"; };
@@ -346,7 +343,6 @@
 			children = (
 				3445662C1AE4890800EFB52E /* LDTPuckView.h */,
 				3445662D1AE4890800EFB52E /* LDTPuckView.m */,
-				3445662F1AE4897400EFB52E /* LDTPuckViewDataSource.h */,
 				34D3947B1AEC27530036D557 /* LDTPuckContentView.h */,
 				34D3947C1AEC27530036D557 /* LDTPuckContentView.m */,
 			);
@@ -408,7 +404,6 @@
 				3406BED91AEF19540029B3F5 /* LDTPuckView.h in Headers */,
 				3406BEDE1AEF19640029B3F5 /* UIView+LDTPuckAutoLayoutUtil.h in Headers */,
 				3406BEDF1AEF19680029B3F5 /* UIView+LDTPuckAutoLayoutUtil.m in Headers */,
-				3406BEDB1AEF19590029B3F5 /* LDTPuckViewDataSource.h in Headers */,
 				3406BEDC1AEF195C0029B3F5 /* LDTPuckContentView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,7 +412,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34D394B51AEC77600036D557 /* LDTPuckViewDataSource.h in Headers */,
 				34D394B21AEC77500036D557 /* LDTPuckControl.h in Headers */,
 				34D394B81AEC77700036D557 /* UIView+LDTPuckAutoLayoutUtil.h in Headers */,
 				34D394961AEC77170036D557 /* PucksterFramework.h in Headers */,

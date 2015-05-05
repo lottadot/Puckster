@@ -62,6 +62,8 @@
                                                   puckColor:[UIColor yellowColor]
                                             puckBorderColor:[UIColor redColor]
                                                    animated:YES];
+        NSAssert(nil != _puckControl, nil);
+        [_puckControl presentPuckAnimated:YES];
     }
 }
 
