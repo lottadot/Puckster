@@ -85,25 +85,6 @@
     [view addSubview:label];
     [view ldt_centerView:label toContainer:view];
     
-    
-//    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:label
-//                                                                        attribute:NSLayoutAttributeHeight
-//                                                                        relatedBy:NSLayoutRelationEqual
-//                                                                           toItem:view
-//                                                                        attribute:NSLayoutAttributeNotAnAttribute
-//                                                                       multiplier:1.0
-//                                                                         constant:100.0];
-//    [view addConstraint:heightConstraint];
-//    
-//    NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:label
-//                                                                       attribute:NSLayoutAttributeWidth
-//                                                                       relatedBy:NSLayoutRelationEqual
-//                                                                          toItem:view
-//                                                                       attribute:NSLayoutAttributeNotAnAttribute
-//                                                                      multiplier:1.0
-//                                                                        constant:100.0];
-//    [view addConstraint:widthConstraint];
-    
     [label sizeToFit];
     
     return view;
