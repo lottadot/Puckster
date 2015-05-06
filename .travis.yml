@@ -1,0 +1,5 @@
+language: objective-c
+xcode_workspace: DebugPuck.xcworkspace
+xcode_scheme: Puckster
+install: carthage bootstrap
+
