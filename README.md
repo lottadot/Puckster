@@ -46,9 +46,9 @@ xcodebuild -workspace DebugPuck.xcworkspace -scheme "Puckster" -destination 'pla
 
 #### Acceptance Tests
 ````
-xcodebuild -workspace DebugPuck.xcworkspace -scheme "Puckster Acceptance Tests" tes
+xcodebuild -workspace DebugPuck.xcworkspace -scheme "Puckster Acceptance Tests" test
 ````
 
 ## License
 
-Carthage is released under the [MIT License](LICENSE.md).
+Puckster is released under the [MIT License](LICENSE.md).
