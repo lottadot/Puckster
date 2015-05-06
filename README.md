@@ -2,7 +2,7 @@
 
 Puckster Debug Puck
 ===============
-This is an iOS-8 Dynamic framework and iOS7/8 Static Library that gives you "Debug Puck"; a small item on the screen that can be tapped to provide "hidden" information.
+This is an iOS-8 Dynamic framework that gives you "Debug Puck"; a small item on the screen that can be tapped to provide "hidden" information.
 
 ## Why
 We generally implement things like this into our apps during QA or UAT. It is intended to let the tester obtain information which a normal user would not normally have access to.
