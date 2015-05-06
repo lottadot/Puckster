@@ -13,7 +13,7 @@ The "puck" is flickable, around the edges of the screen. The user can fling move
 
 This framework is carthage compatible, so it's easy to use. You can wire it up to a hidden shake or super-secret gesture.
 
-![Puckster UI video](https://github.com/lottadot/Puckster/raw/development/assets/puckster-1-0-0.mov)
+[Puckster UI video](https://github.com/lottadot/Puckster/raw/development/assets/puckster-1-0-0.mov)
 ![Puckster UI Screenshot](https://github.com/lottadot/Puckster/raw/development/assets/puckster-1-0-0.png)
 
 ### Use
