@@ -91,14 +91,25 @@
     UIWindow *window = [UIApplication.sharedApplication.windows firstObject];
     UIView *view = [window viewForBaselineLayout];
     CGRect frame = view.bounds;
-    CGPoint point = CGPointMake(CGRectGetMaxX(frame) - 25.0f,
-                                CGRectGetMaxY(frame) - 25.0f);
+    
+    [tester waitForViewWithAccessibilityLabel:@"Puck"];
+    
+    CGFloat topPadding = 0.0f;
+    CGFloat bottomPadding = 0.0f;
+    
+    if (@available(iOS 11.0, *)) {
+        topPadding = window.safeAreaInsets.top;
+        bottomPadding = window.safeAreaInsets.bottom;
+    }
+    
+    CGPoint point = CGPointMake(CGRectGetMaxX(frame) - 25.0f,                           CGRectGetMaxY(frame) - 25.0f  - bottomPadding);
+
     //[tester tapViewWithAccessibilityLabel:@"Puck"];
     [tester tapScreenAtPoint:point];
     [tester waitForTimeInterval:0.1];
     //[tester tapViewWithAccessibilityLabel:@"Puck"];
     [tester tapScreenAtPoint:point];
-    [tester waitForTimeInterval:2.0];
+    [tester waitForTimeInterval:5.0];
     
     [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Puck"];
     [tester waitForViewWithAccessibilityLabel:@"Puckster View Controller"];

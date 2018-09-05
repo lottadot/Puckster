@@ -279,14 +279,26 @@
     CGRect windowFrame = [_puckView.window bounds];
     CGFloat XOffset = LDTPuckControlWidth / 2.0f;
     CGFloat YOffset = LDTPuckControlHeight / 2.0f;
-
+    CGFloat topPadding = 0.0f;
+    CGFloat bottomPadding = 0.0f;
+    CGFloat leftPadding = 0.0f;
+    CGFloat rightPadding = 0.0f;
+    
+    if (@available(iOS 11.0, *)) {
+        UIWindow *window = UIApplication.sharedApplication.keyWindow;
+        topPadding = window.safeAreaInsets.top;
+        bottomPadding = window.safeAreaInsets.bottom;
+        leftPadding = window.safeAreaInsets.left;
+        rightPadding = window.safeAreaInsets.right;
+    }
+    
     switch (location) {
         case LDTPuckViewLocationTopLeft:
         {
             CGFloat statusHeight = CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
-            CGPoint point = CGPointMake(CGRectGetMinX(windowFrame) + XOffset,
-                                        CGRectGetMinY(windowFrame) + YOffset + statusHeight);
-            
+            CGPoint point = CGPointMake(CGRectGetMinX(windowFrame) + XOffset + leftPadding,
+                                        CGRectGetMinY(windowFrame) + YOffset + topPadding + topPadding);
+
             return point;
             
             break;
@@ -294,8 +306,8 @@
         case LDTPuckViewLocationTopRight:
         {
             CGFloat statusHeight = CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
-            CGPoint point = CGPointMake(CGRectGetMaxX(windowFrame) - XOffset,
-                                        CGRectGetMinY(windowFrame) + YOffset + statusHeight);
+            CGPoint point = CGPointMake(CGRectGetMaxX(windowFrame) - XOffset - rightPadding,
+                                        CGRectGetMinY(windowFrame) + YOffset + statusHeight + topPadding);
             
             return point;
             
@@ -303,8 +315,8 @@
         }
         case LDTPuckViewLocationBottomLeft:
         {
-            CGPoint point = CGPointMake(CGRectGetMinX(windowFrame) + XOffset,
-                                        CGRectGetMaxY(windowFrame) - YOffset);
+            CGPoint point = CGPointMake(CGRectGetMinX(windowFrame) + XOffset + leftPadding,
+                                        CGRectGetMaxY(windowFrame) - YOffset - bottomPadding);
             
             return point;
             
@@ -313,9 +325,9 @@
         default:
         {
             // LDTPuckViewLocationBottomRight
-            CGPoint point = CGPointMake(CGRectGetMaxX(windowFrame) - XOffset,
-                                              CGRectGetMaxY(windowFrame) - YOffset);
-            
+            CGPoint point = CGPointMake(CGRectGetMaxX(windowFrame) - XOffset - rightPadding,
+                                              CGRectGetMaxY(windowFrame) - YOffset - bottomPadding);
+        
             return point;
             
             break;
@@ -636,6 +648,13 @@
         {
             xTranslation = movementFactor;
             yTranslation = movementFactor;
+            
+            if (@available(iOS 11.0, *)) {
+                UIWindow *window = UIApplication.sharedApplication.keyWindow;
+                xTranslation -= window.safeAreaInsets.top;
+                yTranslation -= window.safeAreaInsets.bottom;
+            }
+            
             xAnimationInset = 80.0f;
             yAnimationInset1 = 25.0f;
             yAnimationInset2 = 50.0f;
@@ -644,6 +663,12 @@
         }
         case LDTPuckViewLocationTopRight:
         {
+            if (@available(iOS 11.0, *)) {
+                UIWindow *window = UIApplication.sharedApplication.keyWindow;
+                xTranslation += window.safeAreaInsets.top;
+                yTranslation -= window.safeAreaInsets.bottom;
+            }
+            
             xTranslation = -movementFactor;
             yTranslation = movementFactor;
             xAnimationInset = 80.0f;
@@ -654,6 +679,12 @@
         }
         case LDTPuckViewLocationBottomLeft:
         {
+            if (@available(iOS 11.0, *)) {
+                UIWindow *window = UIApplication.sharedApplication.keyWindow;
+                xTranslation -= window.safeAreaInsets.top;
+                yTranslation += window.safeAreaInsets.bottom;
+            }
+            
             xTranslation = movementFactor;
             yTranslation = -movementFactor;
             xAnimationInset = 80.0f;
@@ -664,6 +695,12 @@
         }
         default:
         {
+            if (@available(iOS 11.0, *)) {
+                UIWindow *window = UIApplication.sharedApplication.keyWindow;
+                xTranslation -= window.safeAreaInsets.top;
+                yTranslation -= window.safeAreaInsets.bottom;
+            }
+            
             xTranslation = -movementFactor;
             yTranslation = -movementFactor;
             xAnimationInset = -80.0f;
