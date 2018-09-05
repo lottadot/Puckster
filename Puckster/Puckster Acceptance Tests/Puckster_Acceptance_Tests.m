@@ -3,12 +3,15 @@
 //  Puckster Acceptance Tests
 //
 //  Created by Shane Zatezalo on 5/3/15.
-//  Copyright (c) 2015 Lottadot LLC. All rights reserved.
+//  Copyright (c) 2015-2018 Lottadot LLC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import <KIF/KIF.h>
+#import "LDTPuckControl.h"
+#import "LDTPuckView.h"
+#import "LDTPuckContentView.h"
 
 @interface Puckster_Acceptance_Tests : KIFTestCase
 
