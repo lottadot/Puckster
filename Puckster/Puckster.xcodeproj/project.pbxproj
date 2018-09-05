@@ -627,6 +627,7 @@
 					};
 					34D394901AEC77170036D557 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 3QV7ZA67HV;
 					};
 					34D3949A1AEC77170036D557 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -1119,8 +1120,10 @@
 		34D394AB1AEC77180036D557 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 3QV7ZA67HV;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1144,6 +1147,7 @@
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 3QV7ZA67HV;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
