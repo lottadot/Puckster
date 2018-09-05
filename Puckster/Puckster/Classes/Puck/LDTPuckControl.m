@@ -7,8 +7,8 @@
 //
 
 #import "LDTPuckControl.h"
-#import "LDTPuckView.h"
 #import "LDTPuckContentView.h"
+#import "LDTPuckView.h"
 #import "UIView+LDTPuckAutoLayoutUtil.h"
 
 #define LDTPuckControlWidth 50.0f

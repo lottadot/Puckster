@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import <KIFFramework/KIFFramework.h>
+#import <KIF/KIF.h>
 
 @interface Puckster_Acceptance_Tests : KIFTestCase
 
