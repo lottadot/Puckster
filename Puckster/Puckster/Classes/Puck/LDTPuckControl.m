@@ -295,7 +295,6 @@
     switch (location) {
         case LDTPuckViewLocationTopLeft:
         {
-            CGFloat statusHeight = CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
             CGPoint point = CGPointMake(CGRectGetMinX(windowFrame) + XOffset + leftPadding,
                                         CGRectGetMinY(windowFrame) + YOffset + topPadding + topPadding);
 
