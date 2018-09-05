@@ -102,27 +102,27 @@
 
 - (void)willPresentPuckWithPuckControl:(LDTPuckControl *)puckControl
 {
-    NSLog(@"willPresent");
+    NSLog(@"willPresentPuckWithPuckControl");
 }
 
 - (void)didPresentPuckWithPuckControl:(LDTPuckControl *)puckControl
 {
-    NSLog(@"didPresent");
+    NSLog(@"didPresentPuckWithPuckControl");
 }
 
 - (void)didSelectPuckWithPuckControl:(LDTPuckControl *)puckControl
 {
-    NSLog(@"didSelectPuck");
+    NSLog(@"didSelectPuckWithPuckControl");
 }
 
 - (void)willDismissPuckWithPuckControl:(LDTPuckControl *)puckControl
 {
-    NSLog(@"willDismiss");
+    NSLog(@"willDismissPuckWithPuckControl");
 }
 
 - (void)didDismissPuckWithPuckControl:(LDTPuckControl *)puckControl
 {
-    NSLog(@"didDismiss");
+    NSLog(@"didDismissPuckWithPuckControl");
     [self performSelector:@selector(killThePuck) withObject:nil afterDelay:.05f];
 }
 
@@ -130,6 +130,5 @@
 {
     _puckControl = nil;
 }
-
 
 @end

@@ -1,0 +1,2 @@
+brew "mogenerator"
+brew "carthage"

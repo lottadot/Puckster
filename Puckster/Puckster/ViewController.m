@@ -26,10 +26,4 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    NSLog(@"should be there");
-}
-
 @end

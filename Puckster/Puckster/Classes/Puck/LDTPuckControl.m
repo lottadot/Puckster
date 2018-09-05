@@ -218,7 +218,7 @@
     
     [_window bringSubviewToFront:_puckView];
 
-    void (^animations)() = ^{
+    void (^animations)(void) = ^{
 
         // Visible, Enlarge the Puck
         [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.01f animations:^{
@@ -343,8 +343,8 @@
 
 - (void)movePuckAnimated:(BOOL)animated
 {
-    void (^animations)() = ^{
-        self.puckView.center = [self puckCenterForLocation:_puckLocation];
+    void (^animations)(void) = ^{
+        self.puckView.center = [self puckCenterForLocation:self->_puckLocation];
     };
     
     if (animated) {
@@ -668,8 +668,8 @@
                 yTranslation -= window.safeAreaInsets.bottom;
             }
             
-            xTranslation = -movementFactor;
-            yTranslation = movementFactor;
+            xTranslation += -movementFactor;
+            yTranslation += movementFactor;
             xAnimationInset = 80.0f;
             yAnimationInset1 = 25.0f;
             yAnimationInset2 = 50.0f;
@@ -684,8 +684,8 @@
                 yTranslation += window.safeAreaInsets.bottom;
             }
             
-            xTranslation = movementFactor;
-            yTranslation = -movementFactor;
+            xTranslation += movementFactor;
+            yTranslation += -movementFactor;
             xAnimationInset = 80.0f;
             yAnimationInset1 = -25.0f;
             yAnimationInset2 = -50.0f;
@@ -700,8 +700,8 @@
                 yTranslation -= window.safeAreaInsets.bottom;
             }
             
-            xTranslation = -movementFactor;
-            yTranslation = -movementFactor;
+            xTranslation += -movementFactor;
+            yTranslation += -movementFactor;
             xAnimationInset = -80.0f;
             yAnimationInset1 = -25.0f;
             yAnimationInset2 = -50.0f;
@@ -724,7 +724,7 @@
     // Then create a path out of the Bezier Path.
     CGPathRef curvedPath = bezierPath.CGPath;
     
-    void (^animations)() = ^{};
+    void (^animations)(void) = ^{};
     
     animations = ^{
         

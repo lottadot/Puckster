@@ -31,6 +31,7 @@
 
 - (void)test001VerifyInitialSetup
 {
+    [tester waitForTimeInterval:5.0f];
     [tester waitForViewWithAccessibilityLabel:@"Puckster View Controller"];
     [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Puck"];
 }
