@@ -27,6 +27,11 @@ typedef enum : NSUInteger {
 
 @optional
 
+- (void)willHidePuck:(LDTPuckControl *)puckControl;
+- (void)didHidePuck:(LDTPuckControl *)puckControl;
+- (void)willUnhidePuck:(LDTPuckControl *)puckControl;
+- (void)didUnhidePuck:(LDTPuckControl *)puckControl;
+
 /// Sent immediately before the `LDTPuckControl` will place the puck on the screen.
 - (void)willPresentPuckWithPuckControl:(LDTPuckControl *)puckControl;
 
@@ -91,6 +96,8 @@ typedef enum : NSUInteger {
  Present the puck in the window to the user. If animated, the puck will enlarge and somewhat flex better settling down.
  */
 - (void)presentPuckAnimated:(BOOL)animated;
+
+- (void)hidePuck:(BOOL)hidden Animated:(BOOL)animated;
 
 /**
  Dismiss the puck from the screen.
