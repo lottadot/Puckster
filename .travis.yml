@@ -3,3 +3,7 @@ xcode_workspace: DebugPuck.xcworkspace
 xcode_scheme: Puckster
 install: carthage bootstrap
 
+script: 
+- xcodebuild clean build test -workspace DebugPuck.xcworkspace -scheme Puckster CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -destination 'platform=iOS Simulator,name=iPhone 5S,OS=8.4'
+
+
