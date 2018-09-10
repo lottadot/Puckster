@@ -80,6 +80,10 @@
         CGPoint center = CGPointMake(CGRectGetMaxY(window.frame), CGRectGetMaxY(window.frame));
         _puckView = [[LDTPuckView alloc] initWithPoint:center withBodyColor:_puckColor withBorderColor:_puckBorderColor];
         NSAssert(nil != _puckView, nil);
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidAppear:) name:UIKeyboardDidShowNotification object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidDisappear:) name:UIKeyboardDidHideNotification object:nil];
     }
     
     return self;
@@ -87,6 +91,7 @@
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_puckView removeFromSuperview];
 }
 
@@ -566,6 +571,53 @@
     [self dismissContentViewAnimated:YES];
 }
 
+#pragma mark - Un/Hiding the puck
+
+- (void)hidePuck:(BOOL)hidden Animated:(BOOL)animated {
+    
+    if (nil == self.puckView.superview) {
+        return;
+    }
+    
+    void (^animations)(void) = ^{
+        __weak LDTPuckControl *weakSelf = self;
+        LDTPuckControl *strongSelf = weakSelf;
+        if (nil != strongSelf) {
+            strongSelf.puckView.alpha = (hidden) ? 0.0 : 1.0;
+        }
+    };
+
+    void (^completion)(BOOL finished) = ^(BOOL finished){
+        
+        if (finished) {
+            __weak LDTPuckControl *weakSelf = self;
+            LDTPuckControl *strongSelf = weakSelf;
+            if (nil != strongSelf) {
+                if (hidden) {
+                    [strongSelf.puckView setHidden:hidden];
+                    [strongSelf delegateDidHidePuck];
+                } else {
+                    [strongSelf delegateDidunhidePuck];
+                }
+            }
+        }
+    };
+    
+    if (hidden) {
+        [self delegateWillHidePuck];
+    } else {
+        [self.puckView setHidden:hidden];
+        [self delegateWillUnhidePuck];
+    }
+    
+    if (animated) {
+        [UIView animateWithDuration:0.5 animations:animations completion:completion];
+    } else {
+        animations();
+        completion(true);
+    }
+}
+
 #pragma mark - Dismissal Removal of Content View
 
 /**
@@ -843,6 +895,34 @@
 
 #pragma mark - LDTPuckControlDelegate Helpers
 
+- (void)delegateWillHidePuck
+{
+    if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)] && [self.delegate respondsToSelector:@selector(willHidePuck:)]) {
+        [self.delegate willHidePuck:self];
+    }
+}
+
+- (void)delegateDidHidePuck
+{
+    if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)] && [self.delegate respondsToSelector:@selector(didHidePuck:)]) {
+        [self.delegate didHidePuck:self];
+    }
+}
+
+- (void)delegateWillUnhidePuck
+{
+    if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)] && [self.delegate respondsToSelector:@selector(willUnhidePuck:)]) {
+        [self.delegate willUnhidePuck:self];
+    }
+}
+
+- (void)delegateDidunhidePuck
+{
+    if (nil != self.delegate && [self.delegate conformsToProtocol:@protocol(LDTPuckControlDelegate)] && [self.delegate respondsToSelector:@selector(didUnhidePuck:)]) {
+        [self.delegate didUnhidePuck:self];
+    }
+}
+
 /// Sent to the Delegate before we show the puck
 - (void)delegateWillPresentPuck
 {
@@ -882,5 +962,16 @@
         [self.delegate didDismissPuckWithPuckControl:self];
     }
 }
+
+#pragma mark - Keyboard
+
+- (void)keyboardDidAppear:(id)sender {
+    [self hidePuck:true Animated:true];
+}
+
+- (void)keyboardDidDisappear:(id)sender {
+    [self hidePuck:false Animated:true];
+}
+
 
 @end

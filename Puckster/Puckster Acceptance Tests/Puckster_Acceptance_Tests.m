@@ -31,7 +31,6 @@
 
 - (void)test001VerifyInitialSetup
 {
-    [tester waitForTimeInterval:5.0f];
     [tester waitForViewWithAccessibilityLabel:@"Puckster View Controller"];
     [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Puck"];
 }
@@ -87,7 +86,21 @@
     [tester waitForViewWithAccessibilityLabel:@"Puck"];
 }
 
-- (void)test009VerifyPuckRemoves
+- (void)test009VerifyHidesWhenKeyboard {
+    //
+    [tester waitForViewWithAccessibilityLabel:@"Puck"];
+    [tester tapViewWithAccessibilityIdentifier:@"BogusTextField"];
+    [tester waitForTimeInterval:2.0f];
+    [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Puck"];
+    
+    [tester clearTextFromAndThenEnterTextIntoCurrentFirstResponder:@"UITests"];
+
+    [tester tapViewWithAccessibilityLabel:@"Done"];
+    [tester waitForAbsenceOfViewWithAccessibilityLabel:@"Done"];
+    [tester waitForViewWithAccessibilityLabel:@"Puck"];
+}
+
+- (void)test010VerifyPuckRemoves
 {
     // Simulate a double-tap
     // stepToTapViewWithAccessibilityLabel

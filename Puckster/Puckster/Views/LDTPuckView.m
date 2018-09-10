@@ -40,10 +40,8 @@ static const CGFloat LDTPuckViewDeselectedRadius = 22.0f; // Go with Radius or w
                               LDTPuckViewDefaultWidth,
                               LDTPuckViewDefaultHeight);
     
-    
     return [self initWithFrame:frame withBodyColor:bodyColor withBorderColor:borderColor];
 }
-
 
 - (instancetype)initWithFrame:(CGRect)frame withBodyColor:(UIColor *)bodyColor
               withBorderColor:(UIColor *)borderColor
@@ -51,7 +49,6 @@ static const CGFloat LDTPuckViewDeselectedRadius = 22.0f; // Go with Radius or w
     self = [super initWithFrame:frame];
     
     if (self) {
-        //[self setBackgroundColor:[UIColor redColor]];
         [self setupWithBodyColor:bodyColor borderColor:borderColor];
     }
     
